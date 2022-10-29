@@ -1,0 +1,6 @@
+{
+    "usingComponents": {
+        "notice": "/components/notice/notice",
+        "loading": "/components/loading/loading"
+    }
+}

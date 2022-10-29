@@ -1,0 +1,59 @@
+.registered-detail {
+    background-color: #fff;
+    margin: 20rpx 0;
+}
+
+.registered-type {
+    align-items: center;
+    display: flex;
+    justify-content: space-between;
+    padding: 26rpx 30rpx;
+}
+
+.registered-type-line {
+    background-color: #f5f6f7;
+    height: 1rpx;
+    margin: 0 auto;
+    width: 692rpx;
+}
+
+.registered-detail-title {
+    color: #000;
+    font-size: 26rpx;
+    line-height: 36rpx;
+}
+
+.registered-detail-auth,.registered-detail-title {
+    font-family: PingFang SC;
+    font-weight: 400;
+    opacity: 1;
+}
+
+.registered-detail-auth {
+    background: #fff;
+    border: 2rpx solid #4faa51;
+    border-radius: 2rpx;
+    color: #4faa51;
+    font-size: 22rpx;
+    line-height: 32rpx;
+    padding: 12rpx 16rpx;
+}
+
+.registered-confirm {
+    background: #4e63a9;
+    border-radius: 6rpx;
+    bottom: calc(env(safe-area-inset-bottom));
+    color: #fff;
+    font-family: PingFang SC;
+    font-size: 26rpx;
+    font-weight: 400;
+    height: 80rpx;
+    left: 50%;
+    line-height: 80rpx;
+    margin-bottom: 80rpx;
+    opacity: 1;
+    position: fixed;
+    text-align: center;
+    transform: translate(-50%,0);
+    width: 694rpx;
+}

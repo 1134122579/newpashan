@@ -1,0 +1,27 @@
+<!-- <loading type="1" wx:if="{{!dataBack}}"></loading>
+<view wx:else>
+    <view class="qrcode">
+        <view class="qrcode-info">
+            <view class="qrcode-info-detail">{{dateArr[1]}}月{{dateArr[2]}}日</view>
+            <view class="qrcode-info-detail">{{detail.entry}}</view>
+        </view>
+        <image class="canvas-img" src="{{imgsrc}}" style="width:{{qrcodeWidth}}px; height:{{qrcodeWidth}}px"></image>
+        <view style="position:fixed;left:-200%">
+            <canvas bindlongtap="save" canvasId="canvas" class="canvas" style="width:{{qrcodeWidth}}px; height:{{qrcodeWidth}}px;"></canvas>
+        </view>
+    </view>
+</view> -->
+<loading type="1" wx:if="{{!dataBack}}"></loading>
+<view wx:else>
+    <view class="qrcode">
+        <view class="qrcode-info">
+            <view class="qrcode-info-detail">11月27日</view>
+            <view class="qrcode-info-detail">27</view>
+        </view>
+        <image class="canvas-img" src="../../images/bg.png" style="width:100px; height:100px"></image>
+        <view style="position:fixed;left:-200%">
+            <canvas bindlongtap="save" canvasId="canvas" class="canvas" style="width:100px; height:100px;"></canvas>
+        </view>
+    </view>
+</view>
+

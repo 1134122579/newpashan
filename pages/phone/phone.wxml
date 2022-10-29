@@ -1,0 +1,16 @@
+<!-- <loading type="1" wx:if="{{!dataBack}}"></loading> -->
+<view>
+    <view class="phone-top">
+        <image class="phone-top-icon" src="/images/phone.png"></image>
+        <view class="phone-top-desc">
+            <view style="margin:10rpx auto">请授权您的电话号码</view>
+            <view style="margin:10rpx auto">以便紧急情况时使用</view>
+        </view>
+    </view>
+    <view class="phone-bot">
+        <label>
+            <view class="auth">授权获取电话号码</view>
+            <button bindgetphonenumber="getPhone" data-page="index" openType="getPhoneNumber"></button>
+        </label>
+    </view>
+</view>

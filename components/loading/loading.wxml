@@ -1,0 +1,6 @@
+<view class="loading" wx:if="{{type=='1'}}">
+    <image class="loading-spinner" src="/images/spinner.gif"></image>
+</view>
+<view capture-catch:touchmove="preventdefault" class="loading bg" wx:if="{{type=='2'}}">
+    <image class="loading-spinner" src="/images/spinner_white.gif"></image>
+</view>

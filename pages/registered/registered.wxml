@@ -1,0 +1,56 @@
+<loading type="1" wx:if="{{!dataBack}}"></loading>
+<view wx:else>
+    <view>
+        <view class="title" style="margin-top:20rpx">
+            <image class="title-icon" src="/images/registered.png"></image>
+            <view class="title-words">行山易队员注册</view>
+        </view>
+        <view class="registered-detail">
+            <view class="registered-type">
+                <view class="registered-detail-title">头像昵称</view>
+                <label class="registered-detail-auth" wx:if="{{!hasUserInfo}}">
+                    <view>微信授权</view>
+                    <button bindtap="getUserProfile"></button>
+                </label>
+                <label class="registered-detail-auth" wx:else>已授权</label>
+            </view>
+            <view class="registered-type-line"></view>
+            <view class="registered-type">
+                <view class="registered-detail-title">电话号码</view>
+                <label class="registered-detail-auth" wx:if="{{!phone}}">
+                    <view>微信授权</view>
+                    <button bindgetphonenumber="getPhone" openType="getPhoneNumber"></button>
+                </label>
+                <label class="registered-detail-auth" wx:else>已授权</label>
+            </view>
+            <view class="registered-type-line"></view>
+            <view class="registered-type-line"></view>
+            <view class="registered-type">
+                <view class="registered-detail-title">姓名</view>
+                <input bindblur="name" placeholder="请输入姓名" style="width:160rpx;text-align:right" type="text"></input>
+            </view>
+            <view class="registered-type-line"></view>
+            <view class="registered-type-line"></view>
+            <view class="registered-type" wx:if="{{squadType=='1'}}">
+                <view class="registered-detail-title">所属中队</view>
+                <view class="type-select">南澳中队登山口队员</view>
+            </view>
+            <view class="registered-type" wx:else>
+                <view class="registered-detail-title">所属中队</view>
+                <picker bindchange="bindPickerTeam" class="type-select" range="{{team}}" value="{{index}}">
+                    <view class="picker" wx:if="{{ensureTeam==undefined}}">
+                        <view class="type-select-option">
+                            <view>请选择中队</view>
+                        </view>
+                    </view>
+                    <view class="picker" wx:else>
+                        <view class="type-select-option">
+                            <view>{{team[teamIndex]}}</view>
+                        </view>
+                    </view>
+                </picker>
+            </view>
+        </view>
+    </view>
+    <view bindtap="confirm" class="registered-confirm">提交</view>
+</view>

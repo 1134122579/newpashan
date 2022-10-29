@@ -1,0 +1,156 @@
+<loading type="1" wx:if="{{!dataBack}}"></loading>
+<view wx:else>
+    <view class="mask" wx:if="{{clear}}"></view>
+    <view class="response" wx:if="{{fire==false}}">
+        <scroll-view class="rc" scrollY="true">
+            <view class="rct">登山人员森林防火责任书</view>牛的 <view class="rcd">
+                <view class="rcdw rcdws">请阅读以下内容后下滑至底部点击我已清楚以上责任书内容进行进一步操作。</view>
+                <view class="rcdw">为有效预防森林火灾发生，保护森林资源，根据《森林防火条例》、《广东省森林防火管理规定》，特制定本责任书：</view>
+                <view class="rcdw">一、登山人员必须接受护林人员检查，自觉上缴打火机、火柴等易燃易爆物品，严禁携带火种进山入林。</view>
+                <view class="rcdw">二、严禁在林区内吸烟及丢弃烟蒂、野炊、烤火、玩火。</view>
+                <view class="rcdw">三、严禁在林区内燃放烟花爆竹和孔明灯，在重要节假日、民间祭祀日自觉遵守森林防火有关规定，服从护林人员管理。</view>
+                <view class="rcdw">四、森林特别防火期内、对违反禁令或森林防火有关规定者，将依法顶格处罚。</view>
+                <view class="rcdw">五、自觉增强森林防火意识，一旦发生火情，要及时拨打“119”或报南澳办事处森林消防中队(电话:84425149)，坚决把火势控制在萌芽之中。</view>
+                <view class="rcdw">希望各登山人员认真遵守以上规定。造成山火者，将依法追究相关责任。本责任书点击下方我已清楚按钮后即时生效。</view>
+                <view bindtap="fire" class="rcdb">我已清楚以上责任书内容</view>
+            </view>
+        </scroll-view>
+    </view>
+    <view class="response" wx:if="{{promise==false}}">
+        <scroll-view class="rc" scrollY="true">
+            <view class="rct">进入户外线路声明</view>
+            <view class="rcd">
+                <view class="rcdw rcdws">请阅读以下内容后下滑至底部点击我已清楚以上户外线路声明内容进行进一步操作。</view>
+                <view class="rcdw">我已阅读《进入户外线路须知》。并保证认真遵守这个规定。</view>
+                <view class="rcdw"> 本人理解户外线路沿动，存在安全隐患，会遇到崎岖地带或恶劣天气，远离救助和医疗服务，发生的风险可能致使自己受到伤害、甚至死亡。这些风险包括跌坠、落石、雷击、山洪暴发、山体塌方、溺水、失温、中暑、迷路、蛇(虫)咬刺伤、野兽、刑事案件等。 </view>
+                <view class="rcdw">本人理解以上所列的风险，并不完全包含了所有可能发生的风险，对此，本人愿意承担全部责任和因此而产生的一切费用。</view>
+                <view bindtap="promise" class="rcdb">我已清楚以上户外线路声明内容</view>
+            </view>
+        </scroll-view>
+    </view>
+    <view class="response" wx:if="{{islookTL}}">
+        <scroll-view class="rc" scrollY="true">
+            <view class="rct">森林防火条例</view>
+            <image mode="widthFix" style="width: 100%;" src="https://api.uba9.com/img/pdf-1.png"></image>
+            <image mode="widthFix"  style="width: 100%;" src="https://api.uba9.com/img/pdf-2.png"></image>
+            <view bindtap="lookTL" class="rcdb">我已经阅读森林防火条例</view>
+        </scroll-view>
+    </view>
+    <view wx:if="{{!clear}}">
+        <view class="title" style="margin-top:20rpx">
+            <image class="title-icon" src="/images/add.png"></image>
+            <view class="title-words">新增登山备案</view>
+        </view>
+    </view>
+    <view class="add-detail" wx:if="{{!clear}}">
+        <view class="add-type">
+            <view>起始登山口</view>
+            <picker bindchange="bindPickerEnter" class="entry-select" range="{{enter}}" range-key="name" value="{{index}}">
+                <view class="picker" wx:if="{{!ensureEnter}}">
+                    <view class="entry-select-option">
+                        <view>请选择登山口</view>
+                        <view>
+                            <van-icon name="arrow" />
+                        </view>
+                    </view>
+                </view>
+                <view class="picker" wx:else>
+                    <view class="entry-select-option">
+                        <view>{{ensureEnter}}</view>
+                        <view>
+                            <van-icon name="arrow" />
+                        </view>
+                    </view>
+                </view>
+            </picker>
+        </view>
+        <view class="add-type">
+            <view class="type st">登山方式 </view>
+            <picker bindchange="bindPickerGroup" class="type-select" range="{{group}}" value="{{index}}">
+                <view class="picker" wx:if="{{ensureGroup=='单人'}}">
+                    <view class="type-select-option">
+                        <view>单人</view>
+                        <view>
+                            <van-icon name="arrow" />
+                        </view>
+                    </view>
+                </view>
+                <view class="picker" wx:else>
+                    <view class="type-select-option">
+                        <view>{{group[groupIndex]}}</view>
+                        <view>
+                            <van-icon name="arrow" />
+                        </view>
+                    </view>
+                </view>
+            </picker>
+        </view>
+        <view class="add-type" wx:if="{{ensureGroup=='团队'}}">
+            <view class="type st">团队人数 </view>
+            <input bindblur="ensureFamilyNum" class="type-select" style="text-align: right;" type="number" placeholder="请输入团队人数" value="{{showEnsureFamilyNum}}"></input>
+            <!-- <view><van-icon name="arrow" /></view> -->
+        </view>
+        <view class="add-type">
+            <view class="type st">登山原因 </view>
+            <picker bindchange="bindPickerReason" class="type-select" range="{{reason}}" value="{{index}}">
+                <view class="picker" wx:if="{{ensureReason=='游玩活动'}}">
+                    <view class="type-select-option">
+                        <view>游玩\活动</view>
+                        <view>
+                            <van-icon name="arrow" />
+                        </view>
+                    </view>
+                </view>
+                <view class="picker" wx:else>
+                    <view class="type-select-option">
+                        <view>{{reason[reasonIndex]}}</view>
+                        <view>
+                            <van-icon name="arrow" />
+                        </view>
+                    </view>
+                </view>
+            </picker>
+        </view>
+        <picker bindchange="bindDateChange" class="add-type" end="2031-04-13" mode="date" start="{{date}}" value="{{date}}">
+            <view wx:if="{{!date}}">请选择日期</view>
+            <view class="picker picker-date" wx:else>
+                <view>登山日期</view>
+                <view style="display:flex">
+                    <view>{{date}}</view>
+                    <view>
+                        <van-icon name="arrow" />
+                    </view>
+                </view>
+            </view>
+        </picker>
+        <picker bindchange="bindtimeChange" class="add-type" end="23:00" mode="time" start="{{Timedate}}" value="{{Timedate}}">
+            <view wx:if="{{!Timedate}}">请选择时间</view>
+            <view class="picker picker-date" wx:else>
+                <view>开始时间</view>
+                <view style="display:flex">
+                    <view>{{Timedate}}</view>
+                    <view>
+                        <van-icon name="arrow" />
+                    </view>
+                </view>
+            </view>
+        </picker>
+    </view>
+    <view class="warning" style="border:2rpx solid #4E63A9;margin:20rpx;margin-top:60rpx;font-size:36rpx" wx:if="{{!clear}}">
+        <view class="warning-box" style="border:2rpx solid #4E63A9;margin:5rpx;padding:40rpx 40rpx">
+            <view class="warning-left" style="text-align:left;color:#4E63A9;margin-bottom:10rpx;letter-spacing:6rpx;font-weight:bold">“林区不设垃圾桶</view>
+            <view class="warning-right" style="text-align:right;color:#4E63A9;margin-top:10rpx;letter-spacing:6rpx;font-weight:bold">除了脚印什么也不要留下哦” </view>
+        </view>
+    </view>
+    <view class="bot-part" wx:if="{{!clear}}">
+        <!-- <view class="read">
+            <image bindtap="isRead" src="/images/add_notok.png" style="width:40rpx;height:40rpx;margin:0 10rpx" wx:if="{{!isRead}}"></image>
+            <image bindtap="notRead" src="/images/add_ok.png" style="width:40rpx;height:40rpx;margin:0 10rpx" wx:else></image>
+            <view class="read-words" bindtap="isRead">
+                <view>我已阅读并同意<label style="color:#4f64a9" bindtap="isRead">《登山人员森林防火责任书》</label></view>
+                <view><label bindtap="isRead" style="color:#4f64a9">《森林防火条例》</label>以及<text bindtap="isRead" style="color:#4f64a9">《进入户外线路声明》</text>。</view>
+            </view>
+        </view> -->
+        <view bindtap="createDone" class="createDone">提交备案</view>
+    </view>
+</view>

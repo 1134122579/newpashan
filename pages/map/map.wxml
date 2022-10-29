@@ -1,0 +1,100 @@
+<loading type="1" wx:if="{{!dataBack}}"></loading>
+<view wx:else>
+    <view class="mask" style="width:100%;height:{{windowHeight}}rpx;backgroundColor:#000;opacity:0.7;z-index:2;position:fixed" wx:if="{{coordinate}}"></view>
+    <map showLocation bindmarkertap="onPointTap" covers="{{covers}}" enableSatellite="{{satellite}}" id="myMap" latitude="{{latitude}}" longitude="{{longitude}}" markers="{{markers}}" style="width:100%;height:{{windowHeight}}rpx"></map>
+    <view bindtap="chooseCoordinate" class="choose-coordinate" wx:if="{{isLeader}}">选择坐标</view>
+    <image src="../../images/compass.png" style="width:80rpx;height:80rpx;position:fixed;left:30rpx;top:30rpx;border:2rpx solid #666;background-color:#fff;opacity:0.7;border-radius:80rpx;transform:rotate({{rotate}}deg);"></image>
+    <image bindtap="satellite" src="../../images/change.png" style="width:50rpx;height:50rpx;position:fixed;left:30rpx;top:130rpx;background-color:#fff;opacity:0.9;padding:15rpx;border-radius:80rpx"></image>
+    <image bindtap="toCurrentLocation" src="../../images/aim.png" style="width:60rpx;height:60rpx;position:fixed;left:30rpx;top:230rpx;padding:10rpx;background-color:#fff;opacity:0.9;border-radius:100rpx;z-index:13"></image>
+    <image bindtap="toEventLocation" src="../../images/warning.png" style="width:40rpx;height:40rpx;position:fixed;left:30rpx;top:330rpx;padding:20rpx;border-radius:100rpx;background-color:#fff;opacity:0.9;z-index:13" wx:if="{{eventData}}"></image>
+    <image bindtap="copy" src="../../images/GPS.png" style="width:40rpx;height:40rpx;position:fixed;left:30rpx;top:430rpx;padding:20rpx;border-radius:100rpx;background-color:#fff;opacity:0.9;z-index:13" wx:if="{{eventData}}"></image>
+    <view class="copy" style="padding:40rpx 60rpx" wx:if="{{copy}}">
+        <view style="font-weight:bold;font-size:30rpx">
+            <picker bindchange="bindPickerGPSType" class="entry-select" range="{{GPS}}" value="{{index}}">
+                <view class="picker" wx:if="{{!ensureGPS}}">
+                    <view class="entry-select-option">
+                        <view style="padding-right:30rpx">请选择坐标系</view>
+                        <view>></view>
+                    </view>
+                </view>
+                <view class="picker" wx:else>
+                    <view class="entry-select-option">
+                        <view style="padding-right:30rpx">{{ensureGPS}}</view>
+                        <view>></view>
+                    </view>
+                </view>
+            </picker>
+        </view>
+        <view wx:if="{{ensureGPS}}">
+            <view class="data-box">
+                <view>纬度：{{m1.numberToFix(aftype.latitude)}}</view>
+                <view>经度：{{m1.numberToFix(aftype.longitude)}}</view>
+                <view>类型：{{ensureGPS}}</view>
+            </view>
+            <view class="copyBtn">
+                <view bindtap="copyOrdinate" class="copyConfirmBtn">复制</view>
+                <view bindtap="copyCancel" class="copyCancelBtn">关闭</view>
+            </view>
+        </view>
+        <view wx:else>
+            <view bindtap="copyCancel" class="copyCancelBtn" style="text-align: center;">关闭</view>
+        </view>
+    </view>
+    <view class="coordinate" wx:if="{{coordinate}}">
+        <view class="coordinate-t">请输入需要查询的经纬度</view>
+        <view style="font-weight:bold;font-size:30rpx">
+            <picker bindchange="bindPickerGPS" class="entry-select" range="{{GPS}}" value="{{index}}">
+                <view class="picker" wx:if="{{!ensureGPS}}">
+                    <view class="entry-select-option">
+                        <view style="padding-right:30rpx">请选择坐标系</view>
+                        <view>></view>
+                    </view>
+                </view>
+                <view class="picker" wx:else>
+                    <view class="entry-select-option">
+                        <view style="padding-right:30rpx">{{ensureGPS}}</view>
+                        <view>></view>
+                    </view>
+                </view>
+            </picker>
+        </view>
+        <view class="coordinate-info">
+            <view class="coordinate-title">纬度</view>
+            <input bindblur="lat" class="coordinate-data" placeholder="请输入纬度" type="text"></input>
+        </view>
+        <view class="coordinate-info">
+            <view class="coordinate-title">经度</view>
+            <input bindblur="lng" class="coordinate-data" placeholder="请输入经度" type="text"></input>
+        </view>
+        <view class="coordinate-info">
+            <view class="coordinate-title">字符</view>
+            <input bindblur="content" class="coordinate-data" placeholder="请输入您需要的字符" type="text"></input>
+        </view>
+        <view style="display:flex;justify-content:space-around">
+            <view bindtap="ordinateConfirm" class="ordinate-confirm">确定</view>
+            <view bindtap="ordinateCancel" class="ordinate-confirm">取消</view>
+        </view>
+    </view>
+    <view class="picg">
+        <view bindtap="picg" style="text-align:center;margin:20rpx 0" wx:if="{{!picgHidden}}">
+            <view>▶</view>
+            <view>隐藏</view>
+        </view>
+        <view bindtap="picg" style="text-align:center;margin:20rpx 0" wx:else>
+            <view>◀</view>
+            <view>显示</view>
+        </view>
+        <view wx:if="{{!picgHidden}}">
+            <view style="display:flex;align-items:center;margin:20rpx 0;font-size:26rpx;font-weight:bold" wx:for="{{picg}}" wx:key="index">
+                <image src="{{item.path}}" style="width:30rpx;height:30rpx;margin:0 30rpx"></image>
+                <view>{{item.prop}}</view>
+            </view>
+        </view>
+    </view>
+</view>
+<wxs module="m1">
+var numberToFix = (function(value) {
+    return (parseFloat(value).toFixed(6))
+});
+module.exports.numberToFix = numberToFix;
+</wxs>

@@ -1,0 +1,109 @@
+{
+  "setting": {
+    "compileHotReLoad": true
+  },
+  "condition": {
+    "miniprogram": {
+      "list": [
+        {
+          "name": "",
+          "pathName": "pages/add/add",
+          "query": "",
+          "scene": null
+        },
+        {
+          "name": "",
+          "pathName": "pages/detail/detail",
+          "query": "",
+          "scene": null
+        },
+        {
+          "name": "PDF",
+          "pathName": "pages/pdf/pdf",
+          "query": "",
+          "scene": null
+        },
+        {
+          "name": "详情",
+          "pathName": "pages/detail/detail",
+          "query": "",
+          "scene": null
+        },
+        {
+          "name": "登山地图",
+          "pathName": "pages/entryDetail/entryDetail",
+          "query": "",
+          "scene": null
+        },
+        {
+          "name": "救援地图",
+          "pathName": "pages/jiuyuanDetail/jiuyuanDetail",
+          "query": "beian_id=21",
+          "scene": null
+        },
+        {
+          "name": "pages/jiuyuanDetail/jiuyuanDetail",
+          "pathName": "pages/jiuyuanDetail/jiuyuanDetail",
+          "query": "beian_id=9",
+          "scene": null
+        },
+        {
+          "name": "pages/jiuyuanDetail/jiuyuanDetail",
+          "pathName": "pages/jiuyuanDetail/jiuyuanDetail",
+          "query": "beian_id=45&name=%E5%B0%8F%E8%8D%89",
+          "scene": null
+        },
+        {
+          "name": "pages/entryDetail/entryDetail",
+          "pathName": "pages/entryDetail/entryDetail",
+          "query": "",
+          "scene": null
+        },
+        {
+          "name": "",
+          "pathName": "pages/testify/testify",
+          "query": "state=reset",
+          "scene": null
+        },
+        {
+          "name": "pages/count/count",
+          "pathName": "pages/count/count",
+          "query": "",
+          "scene": null
+        },
+        {
+          "name": "",
+          "pathName": "pages/testify/testify",
+          "query": "",
+          "scene": null
+        },
+        {
+          "name": "pages/testify/testify",
+          "pathName": "pages/testify/testify",
+          "query": "state=reset",
+          "scene": null
+        },
+        {
+          "name": "地图。。。。",
+          "pathName": "pages/lookdkpage/lookdkpage",
+          "query": "user_id=35&date=2022-1-17&rukou_id=2",
+          "scene": null
+        },
+        {
+          "name": "队长端",
+          "pathName": "pages/count/count",
+          "query": "",
+          "scene": null
+        },
+        {
+          "name": "登山口结束",
+          "pathName": "pages/endcode/endcode",
+          "query": "end_rukou=俄公登山口",
+          "scene": null
+        }
+      ]
+    }
+  },
+  "description": "项目私有配置文件。此文件中的内容将覆盖 project.config.json 中的相同字段。项目的改动优先同步到此文件中。详见文档：https://developers.weixin.qq.com/miniprogram/dev/devtools/projectconfig.html",
+  "projectname": "%E7%99%BB%E5%B1%B1"
+}

@@ -1,0 +1,24 @@
+<view class="showMap">
+  <map id="map" longitude="{{longitude}}" latitude="{{latitude}}" scale="14.5" controls="{{controls}}" markers="{{markers}}" bindmarkertap="markertap" show-location="true" style="width: 100%; flex: 1;" circles="{{circles}}"></map>
+  <view class="classstyle">
+    <view class="flexStatus">
+      <block wx:for="{{dkList}}" wx:key="index">
+        <view class="{{options.user_id==item.user_id?'text sure':'text'}}" bindtap="lookuserlocation" data-item="{{item}}">
+          <image src="{{item.headimgurl}}" style="width: 60rpx; height: 60rpx;border-radius: 50%;margin-right: 14rpx;"></image>
+         <view> {{item.name}}</view>
+        </view>
+      </block>
+    </view>
+
+    <view class="buttonout" bindtap="buttonout">返回</view>
+  </view>
+</view>
+<image bindtap="toCurrentLocation" src="../../images/aim.png" style="width:60rpx;height:60rpx;position:fixed;right:30rpx;top:74%;padding:10rpx;background-color:#fff;opacity:0.9;border-radius:100rpx;"></image>
+
+<!-- 打卡时间 -->
+<view class="dkblock">
+  <view class="name">姓名：{{setuseritem.username}} </view>
+  <view class="name">登山口：{{setuseritem.rk_name}} </view>
+  <view class="name">上班打卡：{{setuseritem.onTime}} </view>
+  <view class="name">下班打卡：{{setuseritem.upTime}} </view>
+</view>

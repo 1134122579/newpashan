@@ -1,0 +1,75 @@
+<!-- <loading type="1" wx:if="{{!dataBack}}"></loading> -->
+<view>
+    <map arrowLine showLocation   id="myMap" latitude="{{jystatusDWobj.latitude}}" longitude="{{jystatusDWobj.longitude}}" markers="{{markerList}}" polyline="{{newpolyline}}" style="width: 100%; height: 100Vh"></map>
+    <view class="detail">
+        <view wx:if="{{foldState}}" class="header_xx">
+            <view>
+                <view class="currentstf">
+                    <view>救援位置： </view>
+                    <view>{{jystatusDWobj.longitude}},{{jystatusDWobj.latitude}}</view>
+                </view>
+                <view class="currentstf">
+                    <view>当前位置：</view>
+                    <view>{{statusDWobj.longitude}},{{statusDWobj.latitude}}</view>
+                </view>
+                <!-- <view class="entrystf">
+                    <view>起始登山口：</view>
+                    <view>{{userInfo.bean_info.rukou}}</view>
+                </view> -->
+            </view>
+            <view style="text-align:right">
+                <view bindtap="onSos" class="report">救援完成</view>
+            </view>
+        </view>
+        <view bindtap="fold" class="fold" style="text-align:center" wx:if="{{foldState}}">
+            <view>▲</view>
+            <view>收起</view>
+        </view>
+        <view bindtap="unfold" class="fold" style="text-align:center" wx:if="{{!foldState}}">
+            <view>▼</view>
+            <view>展开</view>
+        </view>
+    </view>
+
+
+    <view class="detail2">
+        <view class="detail2-options">
+            <!-- <view class="jyObj">
+                    <view> 救援对象</view>：<view class="JyObjpl">{{name||'暂无姓名'}}</view>
+                </view> -->
+            <picker mode="selector" value="{{index}}" range-key="name" range="{{Jyarray}}" bindchange="bindchange">
+                <view class="jyObj">
+                    <view> 救援对象</view>：<view class="JyObjpl" wx:if="{{!jyObj}}">{{name||''}}</view>
+                    <view class="JyObjpl" wx:else>{{jyObj}}</view>
+                </view>
+            </picker>
+            <!-- <view class="detail2-options-time">
+                <view class="detail2-options-title">耗时</view>
+                <view class="detail2-options-data">
+                    <view>{{JStime}}</view>
+                </view>
+            </view> -->
+            <!-- <view>
+                <view class="detail2-options-title">当前海拔(m)</view>
+                <view class="detail2-options-data">{{statusDWobj.altitude}}</view>
+            </view> -->
+        </view>
+        <view class="flexContent">
+            <!-- <view class="button_">
+                <van-button icon="qr" color="#347DD7" type="primary" bind:click="start" block plain>开始救援</van-button>
+            </view> -->
+            <view class="button_">
+                <van-button color="#347DD7" bind:click="upDK" block type="primary">开始救援</van-button>
+            </view>
+        </view>
+    </view>
+    <image bindtap="toCurrentLocation" src="../../images/aim.png" style="width:60rpx;height:60rpx;position:fixed;right:30rpx;top:{{windowHeight*0.57}}rpx;padding:10rpx;background-color:#fff;opacity:0.9;border-radius:100rpx;"></image>
+    <!-- <image bindtap="satellite" src="../../images/change.png" style="width:50rpx;height:50rpx;position:fixed;right:30rpx;top:{{windowHeight*0.57-100}}rpx;background-color:#fff;opacity:0.9;padding:15rpx;border-radius:80rpx"></image> -->
+</view>
+<wxs module="fn">
+    module.exports = ({
+        split: (function (str) {
+            return (str.substring(0, 10))
+        }),
+    });
+</wxs>

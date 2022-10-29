@@ -1,0 +1,167 @@
+page {
+    width: 100%;
+    height: 100%;
+    overflow-y: auto;
+    position: relative;
+}
+
+.title {
+    margin-top: 10rpx;
+}
+
+.testify-type {
+    align-items: center;
+    justify-content: space-between;
+    padding: 28rpx 30rpx;
+}
+
+.testify-title,
+.testify-type {
+    display: flex;
+    font-size: 26rpx;
+}
+
+.testify-title {
+    color: #000;
+    font-family: PingFang SC;
+    font-weight: 400;
+    line-height: 36rpx;
+    opacity: 1;
+}
+
+.avatar-img {
+    border-radius: 150rpx;
+    height: 108rpx;
+    width: 108rpx;
+}
+
+.testify-box {
+    background-color: #fff;
+}
+
+.testify-desc {
+    color: #bfbcbc;
+    font-family: PingFang SC;
+    font-size: 20rpx;
+    font-weight: 400;
+    line-height: 28rpx;
+    margin: 20rpx 30rpx;
+    opacity: 1;
+}
+
+.testify-desc,
+.testify-input {
+    text-align: right;
+}
+
+.testify-confirm {
+    background: #377cd4;
+    bottom: calc(env(safe-area-inset-bottom));
+    opacity: 1;
+    width: 694rpx;
+}
+
+.checkbox-confirm,
+.testify-confirm {
+    border-radius: 6rpx;
+    color: #fff;
+    height: 80rpx;
+    line-height: 80rpx;
+    margin: 20rpx auto;
+    text-align: center;
+}
+
+.checkbox-confirm {
+    background-color: #4e63a9;
+    font-size: 26rpx;
+    width: 347rpx;
+}
+
+.getPhone {
+    /* width:140rpx;   */
+    border: none;
+    background: #4E63A9;
+    color: #fff;
+    font-size: 14px;
+    margin: 0;
+    padding: 0 8rpx;
+}
+
+.read {
+    color: #acacac;
+    display: flex;
+    align-items: center;
+    font-size: 24rpx;
+    font-weight: 400;
+    line-height: 28rpx;
+    line-height: 1.5;
+    margin: 20rpx;
+}
+
+.mask {
+    position: absolute;
+    background-color: rgba(0, 0, 0, .3);
+    top: 0;
+    right: 0;
+    left: 0;
+    bottom: 0;
+    z-index: 3;
+}
+
+.zrs {
+    width: 90vw;
+    height: 90vh;
+}
+
+.mask {
+    background-color: rgba(0, 0, 0, .3);
+    height: 1800rpx;
+    width: 100%;
+    z-index: 3;
+}
+
+.response {
+    z-index: 4;
+}
+
+.rc {
+    background-color: #fff;
+    border-radius: 30rpx;
+    height: 1100rpx;
+    left: 50%;
+    padding: 40rpx;
+    position: fixed;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    width: 80%;
+}
+
+.rct {
+    font-size: 36rpx;
+    font-weight: 700;
+    margin: 30rpx auto;
+    text-align: center;
+}
+
+.rcdw {
+    font-size: 30rpx;
+    font-weight: 400;
+    margin: 0 auto;
+    text-indent: 2em;
+    width: 86%;
+}
+
+.rcdws {
+    color: red;
+}
+
+.rcdb {
+    background: #377cd4;
+    border-radius: 10rpx;
+    color: #fff;
+    font-weight: 700;
+    margin: 30rpx auto;
+    padding: 20rpx 0;
+    text-align: center;
+    width: 450rpx;
+}

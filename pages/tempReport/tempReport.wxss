@@ -1,0 +1,52 @@
+.gps,.nogps,.report {
+    background-color: #4e63a9;
+    border-radius: 6rpx;
+    color: #fff;
+    display: inline-block;
+    margin: 20rpx auto;
+    padding: 20rpx 40rpx;
+}
+
+.nogps {
+    background-color: #999;
+}
+
+.title {
+    font-size: 48rpx;
+    font-weight: 700;
+    margin: 40rpx;
+}
+
+.red {
+    color: red;
+    display: inline-block;
+}
+
+.border {
+    margin: 50rpx;
+}
+
+.border,.desc {
+    border: 1px solid #4e63a9;
+}
+
+.desc {
+    margin: 10rpx;
+    padding: 20rpx;
+}
+
+.btn,.data {
+    display: flex;
+}
+
+.data {
+    flex-direction: column;
+    font-weight: 700;
+    justify-content: left;
+    margin: 0 auto;
+    width: 80%;
+}
+
+.data-detail {
+    margin: 5rpx 0;
+}

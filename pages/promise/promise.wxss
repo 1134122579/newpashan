@@ -1,0 +1,38 @@
+.rc,page {
+    background-color: #fff;
+}
+
+.rc {
+    height: 800rpx;
+    padding: 40rpx;
+}
+
+.rct {
+    font-size: 40rpx;
+    font-weight: 700;
+    margin: 40rpx auto;
+    text-align: center;
+}
+
+.rcdw {
+    font-size: 30rpx;
+    font-weight: 400;
+    margin: 0 auto;
+    text-indent: 2em;
+    width: 86%;
+}
+
+.rcdws {
+    color: red;
+}
+
+.rcdb {
+    background: linear-gradient(132deg,#344388,#566db3);
+    border-radius: 10rpx;
+    color: #fff;
+    font-weight: 700;
+    margin: 100rpx auto 30rpx;
+    padding: 20rpx 0;
+    text-align: center;
+    width: 500rpx;
+}

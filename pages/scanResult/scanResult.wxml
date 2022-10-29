@@ -1,0 +1,54 @@
+<loading type="1" wx:if="{{!dataBack}}"></loading>
+<view wx:else>
+    <view class="scan-state-box" style="color:{{color}}" wx:if="{{pass}}">
+        <image class="scan-state" src="/images/scanResult_success.png"></image>
+        <view>核验通过</view>
+    </view>
+    <view class="scan-state-box" style="color:{{color}}" wx:else>
+        <image class="scan-state" src="/images/scanResult_fail.png"></image>
+        <view>核验失败</view>
+    </view>
+    <view>
+        <view class="scan-detail" wx:if="{{verify}}">
+            <view class="scan-type">
+                <view class="scan-title">登山日期</view>
+                <view class="scan-info">
+                    <view style="color:green" wx:if="{{verifyDate}}">{{scanTime}}</view>
+                    <view style="color:red" wx:else>{{scanTime}}</view>
+                </view>
+            </view>
+            <view class="scan-type">
+                <view class="scan-title">登山口</view>
+                <view class="scan-info">
+                    <view style="color:green" wx:if="{{verifyEntry}}">{{verify.entry}}</view>
+                    <view style="color:red" wx:else>{{verify.entry}}</view>
+                </view>
+            </view>
+            <view class="scan-type">
+                <view class="scan-title">姓名</view>
+                <view class="scan-info">{{fullnameTrans}}</view>
+            </view>
+            <view class="scan-type">
+                <view class="scan-title">登山形式</view>
+                <view class="scan-info">
+                    <view wx:if="{{verify.teamid=='0'}}">单人</view>
+                    <view wx:else>团队</view>
+                </view>
+            </view>
+            <view class="scan-type">
+                <view class="scan-title">手机号码</view>
+                <view class="scan-info">{{verify.phone}}</view>
+            </view>
+            <view class="scan-type">
+                <view class="scan-title">用户类型</view>
+                <view class="scan-info">{{verify.usertype}}</view>
+            </view>
+            <view class="scan-type">
+                <view class="scan-title">登山目的</view>
+                <view class="scan-info">{{verify.purpose}}</view>
+            </view>
+        </view>
+        <view wx:else> qrcode </view>
+    </view>
+    <view bindtap="scanCode" class="scan-nextcode">核验下一个二维码</view>
+</view>

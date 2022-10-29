@@ -1,0 +1,393 @@
+<!-- <loading type="1" wx:if="{{!dataBack}}"></loading> -->
+<view>
+    <view class="isUser" wx:if="{{isUser}}">
+        <view class="minigram-info">
+            <view class="userinfo ">
+                <view bindtap="toUser" class="Pb" wx:if="{{!userInfo.headimgurl}}">
+                    <image class="avatar-unlogin-img" src="/images/index_avatar_unlogin.png"></image>
+                </view>
+                <view bindtap="toUser" class="Pb" wx:else>
+                    <image class="avatar-login-img" src="/images/index_avatar_unlogin.png">
+                        <image class="avatar-login-useravatar" src="{{userInfo.headimgurl}}" wx:if="{{userInfo.headimgurl}}"></image>
+                    </image>
+                </view>
+                <view wx:if="{{isToken}}">
+                    <view bindtap="toTestify borderR" class="extra-unpost" wx:if="{{userInfo.is_auth!=1}}">未认证</view>
+                    <image bindtap="extraHas " class="extra-haspost borderR" src="/images/index_extra-haspost.png" wx:else></image>
+                </view>
+                <button bindtap="toTestify borderR" bindtap="newgetUserProfile" class="extra-unpost" wx:if="{{!isToken}}">立即登录</button>
+            </view>
+            <view>
+                <view style="background: #fff;border-radius: 10rpx;">
+                    <view class="situation-sib">
+                        <view class="situation-si borderR" style="background-color:#fff;">
+                            <view class="situation-sig">
+                                <image src="/images/crowd_green.png" style="width:116rpx;height:44rpx" wx:if="{{Weather.today_all_count<=1000}}"></image>
+                                <image src="/images/crowd_yellow.png" style="width:116rpx;height:44rpx" wx:elif="{{Weather.today_all_count>1000||Weather.today_all_count<=3000}}"></image>
+                                <image src="/images/crowd_red.png" style="width:116rpx;height:44rpx" wx:elif="{{Weather.today_all_count>3000}}"></image>
+                            </view>
+                            <view class="situation-si-data borderR" style="color:#000" wx:if="{{Weather.today_all_count}}">
+                                <view class="registered-title">今日人数</view>
+                                <view style="font-size:32rpx;color: #28CD73;font-weight: bold;margin-bottom: -2rpx;margin-top: 5rpx;">{{Weather.today_all_count}}</view>
+                            </view>
+                            <view class="situation-si-data" style="color:#000" wx:else>暂无数据</view>
+                        </view>
+                    </view>
+                    <view class="situation-sib">
+                        <view class="situation-si borderR" style="background-color:#fff" wx:if="{{Weather.BG<=8}}">
+                            <view class="situation-sig">
+                                <image class="situation-si-icon" src="/images/ok.png"></image>
+                            </view>
+                            <view class="situation-si-data">适宜登山</view>
+                        </view>
+                        <view class="situation-si borderR" style="background-color:#fff" wx:if="{{Weather.BG>8}}">
+                            <view class="situation-sig">
+                                <image class="situation-si-icon" src="/images/nook.png"></image>
+                            </view>
+                            <view class="situation-si-data">不易登山</view>
+                        </view>
+                    </view>
+                </view>
+                <swiper autoplay="true" circular="true" class="situation borderR" displayMultipleItems="1" interval="3000" style="width:364rpx;display:flex;flex-direction:column;justify-content:space-between" vertical="true">
+                    <swiper-item class="situation-sib borderR">
+                        <view class="situation-si borderR" style="background-color:#fff">
+                            <view class="situation-sig">
+                                <image class="situation-si-icon" src="/images/index_situation_wind.png"></image>
+                                <view class="situation-si-title">风速</view>
+                            </view>
+                            <view class="situation-si-data" wx:if="{{Weather.power}}"> {{Weather.power}}</view>
+                            <view class="situation-si-data" wx:else>暂无数据</view>
+                        </view>
+                    </swiper-item>
+                    <swiper-item class="situation-sib borderR ">
+                        <view class="situation-si borderR" style="background-color:#fff">
+                            <view class="situation-sig">
+                                <image class="situation-si-icon" src="/images/index_situation_temp.png"></image>
+                                <view class="situation-si-title">气温</view>
+                            </view>
+                            <view class="situation-si-data" wx:if="{{Weather.tempevalue}}">{{Weather.tempevalue}} </view>
+                            <view class="situation-si-data" wx:else>暂无数据</view>
+                        </view>
+                    </swiper-item>
+                    <swiper-item class="situation-sib borderR">
+                        <view class="situation-si borderR" style="background-color:#fff">
+                            <view class="situation-sig">
+                                <image class="situation-si-icon" src="/images/index_situation_humi.png"></image>
+                                <view class="situation-si-title">湿度</view>
+                            </view>
+                            <view class="situation-si-data" wx:if="{{Weather.humidity}}">{{Weather.humidity}}</view>
+                            <view class="situation-si-data" wx:else>暂无数据</view>
+                        </view>
+                    </swiper-item>
+                    <swiper-item class="situation-sib borderR">
+                        <view class="situation-si borderR" style="background-color:#fff">
+                            <view class="situation-sig">
+                                <image class="situation-si-icon" src="/images/index_situation_tyfoon.png"></image>
+                                <view class="situation-si-title">台风预警</view>
+                            </view>
+                            <view class="situation-si-data" wx:if="{{Weather.humidity}}">无</view>
+                            <view class="situation-si-data" wx:else>暂无数据</view>
+                        </view>
+                    </swiper-item>
+                </swiper>
+            </view>
+        </view>
+        <view class="codeStyleAll" wx:if="{{isToken}}" >
+        <view class="codeStyle" bindtap="scanCode" >
+        <image src="../../images/code.png" mode="widthFix" class="codeimage"></image>
+        扫一扫</view>
+        </view>
+        <van-notice-bar  left-icon="volume-o" bind:click="noticeOnClick"  scrollable text="{{Noticecontent.msg}}" />
+        <view wx:if="{{userInfo.bean_info}}" style="margin:20rpx 0;">
+            <view bindtap="start" class="start" style="padding:20rpx 45rpx;border-radius: 10rpx;" wx:if="{{userInfo.bean_info.status==3}}">
+                <view class="startl" style="padding:30rpx auto">
+                    <image src="../../images/bei.png" style="width:78rpx;height:90rpx"></image>
+                    <view style="margin-left:20rpx">
+                        <view style="color:#000;font-size:26rpx;font-weight:bold">您有一个正在进行中的登山备案</view>
+                        <view style="color:#6b6b6b;font-size:26rpx;margin:5rpx 0">请点击查看</view>
+                    </view>
+                </view>
+                <view style="background-color:#367CD5;color:#fff;padding:10rpx 20rpx;display:inline-block;font-size:26rpx;border-radius:10rpx">查看登山</view>
+            </view>
+            <view class="" style="background-color:#fff;width:730rpx;margin:30rpx auto;padding:20rpx 0;border-radius: 10rpx" wx:elif="{{userInfo.bean_info.status==1}}">
+                <view>
+                    <view class="start">
+                        <view class="startl">
+                            <image src="../../images/bei.png" style="width:78rpx;height:90rpx"></image>
+                            <view style="margin-left:30rpx">
+                                <view style="color:#000;font-size:26rpx;font-weight:bold">您有一个可以开启的登山备案</view>
+                                <view style="color:#6b6b6b;font-size:26rpx;margin:5rpx 0">请点击查看</view>
+                            </view>
+                        </view>
+                        <view bindtap="cancel" style="background-color:#377cd4;color:#fff;padding:10rpx 20rpx;display:inline-block;font-size:26rpx;border-radius:10rpx">取消备案</view>
+                        <!-- <view bindtap="start" style="background-color:#377cd4;color:#fff;padding:10rpx 20rpx;display:inline-block;font-size:26rpx;border-radius:10rpx">开始登山</view> -->
+                    </view>
+                </view>
+                <view style="display:flex;justify-content:space-between;margin:0;padding:0 40rpx;">
+                    <view style="font-size:26rpx;font-weight:bold;padding:10rpx">备案登山口：{{userInfo.bean_info.rukou}}</view>
+                    <view bindtap="modify" style="font-size:26rpx;border: 1px solid #377cd4;padding:6rpx 20rpx ;border-radius:10rpx;color: #377cd4;margin-right: 15rpx;">立即修改</view>
+                </view>
+                <view style="width:100vw;height:100vh;position:fixed;left:0;top:0;background-color:rgba(0,0,0,.3); z-index: 2;" wx:if="{{modify}}"></view>
+                <view class="modify" wx:if="{{modify}}">
+                    <view class="editStyle">
+                        <view class="currentEntry" style="margin:15rpx 0">当前登山口：{{userInfo.bean_info.rukou}}</view>
+                        <view style="display:flex;margin:15rpx 0">
+                            <view class="modifyEntry">修改登山口：</view>
+                            <picker bindchange="bindPickerEnter" class="entry-select" range="{{enter}}" range-key="name" value="{{index}}">
+                                <view class="picker" wx:if="{{!ensureEnter}}">
+                                    <view class="entry-select-option">
+                                        <view class="sp">请选择登山口</view>
+                                        <view class="sp">
+                                            <van-icon name="arrow" />
+                                        </view>
+                                    </view>
+                                </view>
+                                <view class="picker" wx:else>
+                                    <view class="entry-select-option sp">
+                                        <view>{{ensureEnter||userInfo.bean_info.rukou}}</view>
+                                        <view>
+                                            <van-icon name="arrow" />
+                                        </view>
+                                    </view>
+                                </view>
+                            </picker>
+                        </view>
+                        <view class="currentTime" style="margin:15rpx 0">当前时间：{{fn.split(userInfo.bean_info.ds_time)}}</view>
+                        <picker bindchange="bindDateChange" class="add-type" end="2031-04-13" mode="date" start="{{date}}" style="margin:15rpx 0" value="{{date}}">
+                            <view style="display:flex" wx:if="{{!date}}">修改时间：<view class="sp" style="display:flex">
+                                    <view>请选择日期</view>
+                                    <view>
+                                        <van-icon name="arrow" />
+                                    </view>
+                                </view>
+                            </view>
+                            <view class="picker picker-date" wx:else>
+                                <view>修改时间：</view>
+                                <view>
+                                    <view class="sp" style="display:flex">
+                                        <view>{{date||fn.split(userInfo.bean_info.ds_time)}}</view>
+                                        <view>
+                                            <van-icon name="arrow" />
+                                        </view>
+                                    </view>
+                                </view>
+                            </view>
+                        </picker>
+                    </view>
+                    <view style="display:flex;justify-content:space-around;">
+                        <view bindtap="confirmModify" class="confirmModify">确认修改</view>
+                        <view bindtap="cancelModify" class="cancelModify">取消修改</view>
+                    </view>
+                </view>
+            </view>
+        </view>
+        <view wx:else>
+            <!-- bindtap="pdf" -->
+            <view class="warning" bindtap="onanlitiaoli" style="background: #fff; margin:10rpx;font-size:36rpx;border-radius: 10rpx;">
+                <view class="warning-box" style="margin:5rpx;padding:40rpx 32rpx; display: flex;justify-content: center;align-items: center;">
+                    <view class="warning-left" style="color:#4E63A9;margin-bottom:10rpx;letter-spacing:6rpx;font-weight:bold"> 根据《广东省森林防火条例》设立森林防火检查站，请进入林区人员积极配合接受检查。</view>
+                    <van-icon name="arrow" color="#4E63A9" />
+                </view>
+            </view>
+        </view>
+        <view class="announcement">
+            <view class="title">
+                <view style="display: flex;">
+                    <image class="title-icon" src="/images/index_announcement_icon.png"></image>
+                    <view class="title-words">园区公告</view>
+                </view>
+                <view class="admin" wx:if="{{userInfo.is_admin==1}}" bindtap="goAdmin">
+                    队长端
+                </view>
+            </view>
+            <view class="content">
+                <!-- <view bindtap="onanlitiaoli" class="content-item" data-id="{{item.id}}">
+                    <view class="content-itemd">
+                        <view class="content-item-title">森林防火条例</view>
+                        <view class="content-item-date">2021-04-21</view>
+                    </view>
+                    <view class="content-item-dashed"></view>
+                </view> -->
+           
+                <view bindtap="onanlione" class="content-item" data-id="{{item.id}}">
+                    <view class="content-itemd">
+                        <view class="content-item-title">违反森林用火案例一</view>
+                        <view class="content-item-date">2021-04-21</view>
+                    </view>
+                    <view class="content-item-dashed"></view>
+                </view>
+                <view bindtap="onanlitwo" class="content-item" data-id="{{item.id}}">
+                    <view class="content-itemd">
+                        <view class="content-item-title">违反森林用火案例二</view>
+                        <view class="content-item-date">2021-04-21</view>
+                    </view>
+                    <view class="content-item-dashed"></view>
+                </view>
+                <view bindtap="onanlithree" class="content-item" data-id="{{item.id}}">
+                    <view class="content-itemd">
+                        <view class="content-item-title">深圳市森林防火禁火通告</view>
+                        <view class="content-item-date">2022-01-24</view>
+                    </view>
+                    <view class="content-item-dashed"></view>
+                </view>
+
+            </view>
+        </view>
+        <image class="addpopup" wx:if="{{!userInfo.bean_info}}" src="/images/popup.gif"></image>
+        <view bindtap="record" wx:if="{{!userInfo.bean_info}}" class="add">登山备案</view>
+        <view bindtap="start" wx:if="{{userInfo.bean_info&&userInfo.bean_info.status==1}}" class="add">开始登山</view>
+        <view bindtap="start" wx:if="{{userInfo.bean_info&&userInfo.bean_info.status==3}}" class="add">查看登山</view>
+        <view style="position:fixed;left:-100%">
+            <!-- <canvas bindlongtap="save" canvasId="canvas" class="canvas" style="width:{{qrcodeWidth}}px; height:{{qrcodeWidth}}px"></canvas> -->
+        </view>
+    </view>
+    <view wx:else>
+        <view class="squad-info">
+            <view class="squad-info-left">
+                <view class="squad-info-avatar-part">
+                    <label wx:if="{{!userInfo}}">
+                        <image class="squad-info-avatar" src="/images/index_squad_avatar.png"></image>
+                        <button bindtap="getUserProfile"></button>
+                    </label>
+                    <view wx:else>
+                        <image class="squad-info-avatar" src="{{userInfoDataBase.avatarUrl}}"></image>
+                    </view>
+                </view>
+                <view class="squad-info-name-part">
+                    <view class="squad-info-name" wx:if="{{!userInfo}}">队员</view>
+                    <view class="squad-info-name" wx:else>{{userInfoDataBase.nickName}}</view>
+                </view>
+            </view>
+            <view class="squad-info-right">
+                <view bindtap="map" class="squad-info-map" wx:if="{{squadName=='南澳消防森林中队'}}">进入地图</view>
+                <view class="squad-info-entry">
+                    <picker bindchange="bindPickerEnter" class="entry-select" range="{{enter}}" value="{{index}}">
+                        <view class="picker" wx:if="{{ensureEnter=='登山口1'}}">
+                            <view class="entry-select-option">
+                                <view>南澳垃圾场登山口</view>
+                                <image src="/images/pd.png" style="width:20rpx;height:20rpx;margin:0 0 0 10rpx"></image>
+                            </view>
+                        </view>
+                        <view class="picker" wx:else>
+                            <view class="entry-select-option">
+                                <view>{{ensureEnter}}</view>
+                                <image src="/images/pd.png" style="width:20rpx;height:20rpx;margin:0 10rpx"></image>
+                            </view>
+                        </view>
+                    </picker>
+                </view>
+            </view>
+        </view>
+        <view wx:if="{{deploy}}">
+            <view style="position:fixed;right:100%">
+                <canvas bindlongtap="save" canvasId="canvasD" class="canvas" style="width:{{qrcodeWidth}}px; height:{{qrcodeWidth}}px"></canvas>
+            </view>
+            <image class="imgDsrc" src="{{imgDsrc}}" style="width:{{qrcodeWidth}}px;height:{{qrcodeWidth}}px"></image>
+        </view>
+        <view class="deploy">
+            <view bindtap="deploy" class="deploy-btn" wx:if="{{!deploy}}">配置机器</view>
+            <view bindtap="deploy" class="deploy-btn" wx:if="{{deploy==true}}">关闭二维码</view>
+        </view>
+        <view class="confirmTelB" wx:if="{{isLeader==true}}">
+            <view class="confirmTelNumT">紧急救援手机号码</view>
+            <input bindblur="confirmTelNum" class="confirmTelNum" placeholder="请输入手机号码" type="number"></input>
+            <view bindtap="confirmTel" class="confirmTel">发送紧急救援短信</view>
+        </view>
+        <view wx:if="{{squadName=='南澳消防森林中队'}}">
+            <view class="title">
+                <image class="title-icon" src="/images/index_announcement_icon.png"></image>
+                <view class="title-words">当日登山口流量</view>
+            </view>
+            <view bindtap="workrefresh" class="workrefresh">刷新</view>
+            <view class="traffic">
+                <view class="table">
+                    <view class="trh" style="border-bottom:6rpx #E8E8E8 solid ">
+                        <view class="th">登山口</view>
+                        <view class="th">总数</view>
+                        <view class="th ">未启</view>
+                        <view class="th ">在途</view>
+                        <view class="th ">结束</view>
+                    </view>
+                    <view class="tr" style="font-weight:bold" wx:if="{{traffic}}">
+                        <view class="td">总数</view>
+                        <view class="td">{{zsSum}}</view>
+                        <view class="td">{{wqSum}}</view>
+                        <view class="td">{{ztSum}}</view>
+                        <view class="td">{{jsSum}}</view>
+                    </view>
+                    <view class="tr" wx:for="{{traffic}}" wx:key="index">
+                        <view class="td">{{item.entry}}</view>
+                        <view class="td">{{item.zs}}</view>
+                        <view class="td">{{item.wq}}</view>
+                        <view class="td">{{item.zt}}</view>
+                        <view class="td">{{item.js}}</view>
+                    </view>
+                </view>
+            </view>
+        </view>
+        <view wx:if="{{squadName=='南澳消防森林中队'}}">
+            <view class="title">
+                <image class="title-icon" src="/images/report.png"></image>
+                <view class="title-words">位置上报</view>
+                <image src="/images/warning.png" style="width:40rpx;height:40rpx" wx:if="{{newRp}}"></image>
+            </view>
+            <view bindtap="rpRefresh" class="workrefresh">刷新</view>
+            <view class="location">
+                <view bindtap="mapLatLng" class="location-report" data-condition="{{item.condition}}" data-createdAt="{{item.createdAt}}" data-fullname="{{item.fullname}}" data-id="{{item.id}}" data-lat="{{item.lat}}" data-lng="{{item.lng}}" data-openId="{{item.openid}}" wx:for="{{reportList}}" wx:key="index">
+                    <view class="location-report-date">{{item.dateBack}}</view>
+                    <view class="location-report-time">{{item.timeBack}}</view>
+                    <view wx:if="{{item.entryId=='紧急上报'}}">
+                        <view class="location-report-phone" wx:if="{{item.phone}}">❗{{item.phone}}</view>
+                        <view class="location-report-phone" wx:else>❗</view>
+                    </view>
+                    <view wx:else>
+                        <view class="location-report-phone" wx:if="{{item.phone}}">{{item.phone}}</view>
+                        <view class="location-report-phone" wx:else>队长录入位置</view>
+                    </view>
+                    <view wx:if="{{item.condition=='0'}}">未分发</view>
+                    <view wx:if="{{item.condition=='1'}}">已分发</view>
+                </view>
+            </view>
+        </view>
+        <view bindtap="scanCode" class="squad-scanCode">核验二维码</view>
+        <image bindtap="changeRole" class="changeRole" src="../../images/change.png"></image>
+    </view>
+</view>
+<view class="ismc" wx:if="{{is_ts}}">
+    <view class="bubble" wx:if="{{isone}}">
+        <view class="title_tx" >第一步:点击登录</view>
+        <view style="display: flex;justify-content: space-around;width: 100%;">
+            <view class="qd" style="color: #377cd4;" bindtap="onOne">
+                确定
+            </view>
+            <view class="qd"  bindtap="onTSclone">
+                不再提示
+            </view>
+        </view>
+    </view>
+    <view class="bubbleTwo" wx:if="{{isTwo}}">
+        <view class="title_tx">第二步:进行登山备案</view>
+        <view style="display: flex;justify-content: space-around;width: 100%;">
+            <view class="qd" style="color: #377cd4;" bindtap="onTwo">
+                确定
+            </view>
+            <view class="qd" bindtap="onTSclone">
+                不再提示
+            </view>
+        </view>
+    </view>
+</view>
+<wxs module="fn">
+    module.exports = ({
+        split: (function (str) {
+            return (str.substring(0, 10))
+        }),
+    });
+</wxs>
+<van-popup show="{{ isNoticeshow }}" closeable bind:close="onNoticeClose">
+    <view class="pwinfoStyle">
+    <view class="userImageStyle">
+        <image src="{{Noticecontent.img_url}}" style="width: 100%;" mode="widthFix"></image>
+    </view>
+    </view>
+</van-popup>

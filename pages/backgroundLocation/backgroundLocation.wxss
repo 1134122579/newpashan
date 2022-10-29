@@ -1,0 +1,41 @@
+.pic {
+    height: 600rpx;
+    left: 50%;
+    position: fixed;
+    top: 10%;
+    transform: translate(-50%,0);
+    width: 600rpx;
+}
+
+.login-top-desc {
+    color: #000;
+    font-size: 32rpx;
+    line-height: 44rpx;
+    margin-top: 78rpx;
+    opacity: .74;
+    top: 50%;
+}
+
+.btn-box,.login-top-desc {
+    font-family: PingFang SC;
+    font-weight: 400;
+    left: 50%;
+    position: fixed;
+    text-align: center;
+    transform: translate(-50%,0);
+}
+
+.btn-box {
+    background: #57be6a;
+    border-radius: 6rpx;
+    bottom: calc(env(safe-area-inset-bottom) + 100rpx);
+    color: #fff;
+    display: inline-block;
+    font-size: 28rpx;
+    height: 92rpx;
+    line-height: 92rpx;
+    margin: 10rpx auto;
+    opacity: 1;
+    width: 1000rpx;
+    width: 45%;
+}

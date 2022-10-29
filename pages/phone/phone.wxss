@@ -1,0 +1,48 @@
+page {
+    background-color: #f6f6f6;
+}
+
+.phone-top {
+    left: 50%;
+    margin: 0 auto;
+    position: fixed;
+    text-align: center;
+    top: 40%;
+    transform: translate(-50%,-50%);
+}
+
+.phone-top-icon {
+    height: 518rpx;
+    width: 532rpx;
+}
+
+.phone-top-desc {
+    color: #000;
+    font-size: 32rpx;
+    line-height: 44rpx;
+    margin-top: 128rpx;
+    opacity: .74;
+}
+
+.phone-bot,.phone-top-desc {
+    font-family: PingFang SC;
+    font-weight: 400;
+}
+
+.phone-bot {
+    background: #57be6a;
+    border-radius: 6rpx;
+    bottom: calc(env(safe-area-inset-bottom));
+    color: #fff;
+    display: inline-block;
+    font-size: 28rpx;
+    height: 92rpx;
+    left: 50%;
+    line-height: 92rpx;
+    margin: 0 auto 80rpx;
+    opacity: 1;
+    position: fixed;
+    text-align: center;
+    transform: translate(-50%,0);
+    width: 694rpx;
+}

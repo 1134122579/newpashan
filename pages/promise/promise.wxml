@@ -1,0 +1,14 @@
+<!-- <loading type="1" wx:if="{{!dataBack}}"></loading> -->
+<view >
+    <view class="response">
+        <view class="rc">
+            <view class="rct">进入户外线路声明</view>
+            <view class="rcd">
+                <view class="rcdw">我已阅读《进入户外线路须知》。并保证认真遵守这个规定。</view>
+                <view class="rcdw">本人理解户外线路沿动，存在安全隐患，会遇到崎岖地带或恶劣天气，远离救助和医疗服务，发生的风险可能致使自己受到伤害、甚至死亡。这些风险包括跌坠、落石、雷击、山洪暴发、山体塌方、溺水、失温、中暑、迷路、蛇(虫)咬刺伤、野兽、刑事案件等。</view>
+                <view class="rcdw">本人理解以上所列的风险，并不完全包含了所有可能发生的风险，对此，本人愿意承担全部责任和因此而产生的一切费用。</view>
+                <view bindtap="return" class="rcdb">返回</view>
+            </view>
+        </view>
+    </view>
+</view>

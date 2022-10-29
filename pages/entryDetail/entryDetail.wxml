@@ -1,0 +1,129 @@
+<!-- <loading type="1" wx:if="{{!dataBack}}"></loading> -->
+<view>
+    <map arrowLine showLocation   id="myMap" latitude="{{statusDWobj.latitude}}" longitude="{{statusDWobj.longitude}}" markers="{{markers}}" polyline="{{newpolyline}}" style="width: 100%; height: 100Vh"></map>
+    <view class="detail">
+        <view wx:if="{{foldState}}" class="header_xx">
+            <view>
+                <view class="reportstf" wx:if="{{last}}">
+                    <view class="reportstfd">
+                        <view>上报位置：</view>
+                        <view>{{last.lastLng}},{{last.lastLat}}</view>
+                    </view>
+                    <view class="reportstfd">
+                        <view>上报时间：</view>
+                        <view>{{last.lastTime}}</view>
+                    </view>
+                </view>
+                <view class="currentstf">
+                    <view>当前位置：</view>
+                    <view>{{statusDWobj.longitude}},{{statusDWobj.latitude}}</view>
+                </view>
+                <view class="entrystf">
+                    <view>起始登山口：</view>
+                    <view>{{userInfo.bean_info.rukou}}</view>
+                </view>
+            </view>
+            <view style="text-align:right">
+                <view bindtap="onSos" class="report">救援申请</view>
+            </view>
+        </view>
+        <view bindtap="fold" class="fold" style="text-align:center" wx:if="{{foldState}}">
+            <view>▲</view>
+            <view>收起</view>
+        </view>
+        <view bindtap="unfold" class="fold" style="text-align:center" wx:if="{{!foldState}}">
+            <view>▼</view>
+            <view>展开</view>
+        </view>
+    </view>
+    <view class="mask" style="width:100%;height:100vh;z-index:10;background-color:rgba(0,0,0,.4)" wx:if="{{mask}}"></view>
+    <view class="mask" style="width:100%;height:{{windowHeight}}rpx;z-index:10;background-color:#999;opacity:0.7" wx:if="{{canvasmask}}"></view>
+    <view class="start" style="z-index:11" wx:if="{{mask}}">
+        <view class="startt" >
+            <view>南澳祝您登山路途愉快，一路平安</view>
+            <view>如遇到突发情况请及时进行紧急呼叫</view>
+        </view>
+        <!-- <view class="startt" wx:if="{{!statusPoup}}">
+            <view>{{userInfo.bean_info.rukou}}</view>
+        </view> -->
+        <!-- <image class="qrcode" wx:if="{{!statusPoup}}" src="{{userInfo.headimgurl}}" style="width:100px; height:100px;display: block;border-radius: 50%;"></image> -->
+        <image class="qrcode"  src="{{createCodeImg}}" style="width:285px; height:285px;display: block;"></image>
+        <view class="qrcode-info">
+            <view class="cub time">
+                <view>{{fn.split(userInfo.bean_info.ds_time)}}</view>
+            </view>
+        </view>
+        <!-- <view class="btn-group" wx:if="{{!statusPoup}}">
+            <view bindtap="start" class="startbtn">开始登山</view>
+            <view bindtap="cancel" class="cancelbtn">取消备案</view>
+        </view> -->
+        <view class="btn-group">
+            <view bindtap="onlookcancel" class="cancelbtn" style="width: 80%;">返回</view>
+        </view>
+    </view>
+    <view style="position:fixed;left:-100%">
+        <canvas bindlongtap="save" canvasId="canvas" class="canvas" style="width:{{qrcodeWidth}}px; height:{{qrcodeWidth}}px"></canvas>
+    </view>
+    <view class="detail2">
+        <view class="detail2-options">
+            <view class="detail2-options-time">
+                <view class="detail2-options-title">耗时</view>
+                <view class="detail2-options-data">
+                    <view>{{JStime}}</view>
+                </view>
+            </view>
+            <!-- <view>
+                <view class="detail2-options-title">当前海拔(m)</view>
+                <view class="detail2-options-data">{{statusDWobj.altitude}}</view>
+            </view> -->
+        </view>
+        <!-- bindtap="finish" -->
+        <view class="flexContent">
+            <view class="button_">
+                <van-button icon="qr" color="#377cd4" type="primary" bind:click="lookCode" block plain>登山码</van-button>
+            </view>
+            <view class="button_">
+                <van-button color="#377cd4" bind:click="start" wx:if="{{is_gostart}}" block type="primary">开始登山</van-button>
+                <van-button color="#377cd4" bind:click="onjishu" wx:else block type="primary">结束登山</van-button>
+            </view>
+        </view>
+    </view>
+    <view class="finish-box draw" id="finish-box" wx:if="{{finish}}">
+        <canvas canvasId="canvas-map" class="share-canvas" style="height:1160rpx;position:relative">
+            <cover-image bindtap="close" class="close" src="../../images/x.png"></cover-image>
+            <cover-image bindtap="share" class="share" src="../../images/s.png"></cover-image>
+        </canvas>
+    </view>
+    <!-- <image bindtap="toDQLocation" src="../../images/aim.png" style="width:60rpx;height:60rpx;position:fixed;right:30rpx;top:{{windowHeight*0.57}}rpx;padding:10rpx;background-color:#fff;opacity:0.9;border-radius:100rpx;"></image> -->
+    <image bindtap="toCurrentLocation" src="../../images/aim.png" style="width:60rpx;height:60rpx;position:fixed;right:30rpx;top:{{windowHeight*0.57}}rpx;padding:10rpx;background-color:#fff;opacity:0.9;border-radius:100rpx;"></image>
+    <!-- <image bindtap="satellite" src="../../images/change.png" style="width:50rpx;height:50rpx;position:fixed;right:30rpx;top:{{windowHeight*0.57-100}}rpx;background-color:#fff;opacity:0.9;padding:15rpx;border-radius:80rpx"></image> -->
+</view>
+<view class="isShowMask" wx:if="{{isShowMask}}">
+    <view class="isShowMask_content" >
+        <view>未开启后台位置获取</view>
+        <view>第一步：请点击右上角“...”按钮。 </view>
+        <view>第二步：进入设置消息，勾选按钮“使用小程序期间和离开小程序后”，如下图示</view>
+        <view class="imageStyle_ts">
+            <image src="/images/ts.png" style="width: 100%;" mode="widthFix"></image>
+        </view>
+        <view class="button_mask">
+            <view class="ql" style="color:#377cd4;" bindtap="onokcancleshowMask">
+                确定
+            </view>
+            <view class="ql" style="color: #ccc;" bindtap="oncancleshowMask" >
+                取消
+            </view>
+        </view>
+    </view>
+
+</view>
+
+
+
+<wxs module="fn">
+    module.exports = ({
+        split: (function (str) {
+            return str&&(str.substring(0, 10))
+        }),
+    });
+</wxs>

@@ -1,0 +1,6 @@
+<view class="container" id="wrapper">
+    <map class="draw"></map>
+    <image class="draw" src="../../images/add.png"></image>
+    <button bindtap="drawCanvas" class="generate-btn">generate</button>
+</view>
+<canvas canvasId="canvas-map" class="share-canvas"></canvas>

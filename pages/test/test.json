@@ -1,0 +1,6 @@
+{
+    "usingComponents": {
+        "screenShot": "../../components/screenShot/screenShot",
+        "loading": "/components/loading/loading"
+    }
+}

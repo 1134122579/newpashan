@@ -1,0 +1,4 @@
+<!-- <web-view src="https://api.uba9.com/img/a.pdf"></web-view> -->
+<view style="width: 100%; ">
+  <image style="width: 100%; display: block;" src="https://api.uba9.com/img/a.jpg" mode="widthFix"></image>
+</view>

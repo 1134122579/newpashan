@@ -1,0 +1,18 @@
+<loading type="1" wx:if="{{!dataBack}}"></loading>
+<view wx:else>
+    <view class="response">
+        <view class="rc">
+            <view class="rct">登山人员森林防火责任书</view>
+            <view class="rcd">
+                <view class="rcdw">为有效预防森林火灾发生，保护森林资源，根据《森林防火条例》、《广东省森林防火管理规定》，特制定本责任书：</view>
+                <view class="rcdw">一、登山人员必须接受护林人员检查，自觉上缴打火机、火柴等易燃易爆物品，严禁携带火种进山入林。</view>
+                <view class="rcdw">二、严禁在林区内吸烟及丢弃烟蒂、野炊、烤火、玩火。</view>
+                <view class="rcdw">三、严禁在林区内燃放烟花爆竹和孔明灯，在重要节假日、民间祭祀日自觉遵守森林防火有关规定，服从护林人员管理。</view>
+                <view class="rcdw">四、森林特别防火期内、对违反禁令或森林防火有关规定者，将依法顶格处罚。</view>
+                <view class="rcdw">五、自觉增强森林防火意识，一旦发生火情，要及时拨打“12119”或报南澳办事处森林消防中队(电话:84425149)，坚决把火势控制在萌芽之中。</view>
+                <view class="rcdw">希望各登山人员认真遵守以上规定。造成山火者，将依法追究相关责任。本责任书点击下方我已清楚按钮后即时生效。</view>
+                <view bindtap="return" class="rcdb">返回</view>
+            </view>
+        </view>
+    </view>
+</view>

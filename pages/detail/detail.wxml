@@ -1,0 +1,96 @@
+<loading type="1" wx:if="{{!dataBack}}"></loading>
+<view wx:else>
+    <image bindtap="popup" class="popup" src="/images/popup.png" wx:if="{{popup&&detail.condition=='-20'}}"></image>
+    <view wx:if="{{!clear}}">
+        <view class="title" style="margin-top:20rpx">
+            <image class="title-icon" src="/images/index_announcement_icon.png"></image>
+            <view class="title-words">新增登山备案</view>
+        </view>
+    </view>
+    <view class="detail-detail" wx:if="{{!clear}}">
+        <view class="detail-type">
+            <view>起始登山口</view>
+            <view>{{detail.entry}}</view>
+        </view>
+        <view class="detail-type">
+            <view> 开始时间</view>
+            <view> {{dateBack}}</view>
+        </view>
+        <view class="detail-type">
+            <view> 登山原因</view>
+            <view> {{detail.purpose}}</view>
+        </view>
+        <view class="detail-type">
+            <view> 登山方式</view>
+            <view> 团体</view>
+        </view>
+    </view>
+    <view style="display:flex;justify-content:space-between;margin-right:30rpx" wx:if="{{!clear}}">
+        <view class="title">
+            <image class="title-icon" src="/images/company.png"></image>
+            <view class="title-words">同行人员</view>
+        </view>
+        <view class="title-desc">共{{sum}}人</view>
+    </view>
+    <view wx:if="{{!clear}}">
+        <view bindtap="refresh" class="refresh">刷新同行人员列表</view>
+        <view class="teammates leader">
+            <view class="teammates-detail">
+                <view class="teammates-fullname">（队长）{{detail.leader.fullname}}</view>
+                <view style="display:flex;align-items:center">
+                    <view class="teammates-phone">{{detail.leader.phone}}</view>
+                </view>
+            </view>
+        </view>
+        <view class="teammates" wx:if="{{sum!='1'}}">
+            <view class="teammates-detail" wx:for="{{teammates}}" wx:key="index">
+                <view class="teammates-fullname">{{item.fullname}}</view>
+                <view style="display:flex;align-items:center">
+                    <view class="teammates-phone">{{item.phone}}</view>
+                    <image bindtap="remove" class="teammates-del" data-openid="{{item.openid}}" src="/images/del.png" wx:if="{{detail.isMe=='yes'&&detail.condition=='-20'&&detail.isLeader}}"></image>
+                </view>
+            </view>
+        </view>
+        <view style="background-color:#fff;padding:20rpx 0;margin:20rpx 0" wx:else>
+            <view style="font-size:26rpx;margin:0 30rpx">暂无同行人员</view>
+        </view>
+    </view>
+    <view class="read" wx:if="{{success==true&&inteam==false&&detail.condition=='-20'&&detail.isMe=='no'}}">
+        <image bindtap="isRead" src="/images/add_notok.png" style="width:36rpx;height:36rpx;margin:0 20rpx" wx:if="{{!isRead}}"></image>
+        <image bindtap="notRead" src="/images/add_ok.png" style="width:36rpx;height:36rpx;margin:0 20rpx" wx:else></image>
+        <view class="read-words"> 我已阅读并同意<label bindtap="toFire" style="color:#4E63A9">《登山人员森林防火责任书》</label>以及<label bindtap="toPromise" style="color:#4E63A9">《进入户外线路声明》</label>。 </view>
+    </view>
+    <view bindtap="join" class="join" wx:if="{{success==true&&inteam==false&&detail.condition=='-20'&&detail.isMe=='no'}}">加入</view>
+    <view bindtap="leave" class="leave" wx:if="{{success==true&&inteam==true&&detail.condition=='-20'&&detail.isMe=='no'}}">离开此队伍</view>
+    <view bindtap="leaderApprove" class="leader-approve" wx:if="{{detail.condition=='-20'&&detail.isMe=='yes'&&detail.isLeader}}">领队提交申报</view>
+    <view bindtap="cancel" class="leader-cancel" wx:if="{{detail.condition=='-20'&&detail.isMe=='yes'&&detail.isLeader}}">取消备案</view>
+    <view class="mask" wx:if="{{clear}}"></view>
+    <view class="response" wx:if="{{fire==false}}">
+        <scroll-view class="rc" scrollY="true">
+            <view class="rct">登山人员森林防火责任书</view>
+            <view class="rcd">
+                <view class="rcdw rcdws">请阅读以下内容后下滑至底部点击我已清楚以上责任书内容进行进一步操作。</view>
+                <view class="rcdw">为有效预防森林火灾发生，保护森林资源，根据《森林防火条例》、《广东省森林防火管理规定》，特制定本责任书：</view>
+                <view class="rcdw">一、登山人员必须接受护林人员检查，自觉上缴打火机、火柴等易燃易爆物品，严禁携带火种进山入林。</view>
+                <view class="rcdw">二、严禁在林区内吸烟及丢弃烟蒂、野炊、烤火、玩火。</view>
+                <view class="rcdw">三、严禁在林区内燃放烟花爆竹和孔明灯，在重要节假日、民间祭祀日自觉遵守森林防火有关规定，服从护林人员管理。</view>
+                <view class="rcdw">四、森林特别防火期内、对违反禁令或森林防火有关规定者，将依法顶格处罚。</view>
+                <view class="rcdw">五、自觉增强森林防火意识，一旦发生火情，要及时拨打“119”或报南澳办事处森林消防中队(电话:84425149)，坚决把火势控制在萌芽之中。</view>
+                <view class="rcdw">希望各登山人员认真遵守以上规定。造成山火者，将依法追究相关责任。本责任书点击下方我已清楚按钮后即时生效。</view>
+                <view bindtap="fire" class="rcdb">我已清楚以上责任书内容</view>
+            </view>
+        </scroll-view>
+    </view>
+    <view class="response" wx:if="{{promise==false}}">
+        <scroll-view class="rc" scrollY="true">
+            <view class="rct">进入户外线路声明</view>
+            <view class="rcd">
+                <view class="rcdw rcdws">请阅读以下内容后下滑至底部点击我已清楚以上户外线路声明内容进行进一步操作。</view>
+                <view class="rcdw">我已阅读《进入户外线路须知》。并保证认真遵守这个规定。</view>
+                <view class="rcdw"> 本人理解户外线路沿动，存在安全隐患，会遇到崎岖地带或恶劣天气，远离救助和医疗服务，发生的风险可能致使自己受到伤害、甚至死亡。这些风险包括跌坠、落石、雷击、山洪暴发、山体塌方、溺水、失温、中暑、迷路、蛇(虫)咬刺伤、野兽、刑事案件等。 </view>
+                <view class="rcdw">本人理解以上所列的风险，并不完全包含了所有可能发生的风险，对此，本人愿意承担全部责任和因此而产生的一切费用。</view>
+                <view bindtap="promise" class="rcdb">我已清楚以上户外线路声明内容</view>
+            </view>
+        </scroll-view>
+    </view>
+</view>

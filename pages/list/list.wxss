@@ -1,0 +1,69 @@
+.list-type {
+    align-items: center;
+    background-color: #fff;
+    justify-content: space-between;
+    margin: 10rpx 0;
+    padding: 18rpx 30rpx;
+}
+
+.list-info,.list-type {
+    display: flex;
+}
+
+.list-info {
+    color: #000;
+    font-family: PingFang SC;
+    font-size: 26rpx;
+    font-weight: 400;
+    line-height: 36rpx;
+    opacity: 1;
+}
+
+.list-info-entry {
+    margin: 0 10rpx;
+}
+
+.list-state {
+    background: #fff;
+    border: 2rpx solid #4faa51;
+    border-radius: 2rpx;
+    color: #4faa51;
+    font-family: PingFang SC;
+    font-size: 22rpx;
+    font-weight: 400;
+    height: 54rpx;
+    line-height: 54rpx;
+    opacity: 1;
+    text-align: center;
+    width: 120rpx;
+}
+
+.modify {
+    background-color: #fff;
+    border-radius: 15rpx;
+    left: 50%;
+    padding: 50rpx;
+    position: fixed;
+    top: 50%;
+    transform: translate(-50%,-50%);
+    width: 440rpx;
+}
+
+.add-type,.currentEntry,.currentTime,.entry-select-option,.modifyEntry,.picker-date {
+    display: flex;
+    font-size: 26rpx;
+}
+
+.sp {
+    color: #4faa51;
+}
+
+.cancelModify,.confirmModify {
+    background-color: #4e63a9;
+    border-radius: 5rpx;
+    color: #fff;
+    font-size: 26rpx;
+    padding: 13rpx 0;
+    text-align: center;
+    width: 150rpx;
+}

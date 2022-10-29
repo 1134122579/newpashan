@@ -1,0 +1,2 @@
+<loading type="1" wx:if="{{!dataBack}}"></loading>
+<view wx:else></view>

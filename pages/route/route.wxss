@@ -1,0 +1,18 @@
+.route-btn {
+    background-color: #000;
+    bottom: 10%;
+    color: #fff;
+    padding: 10rpx 50rpx;
+}
+
+.route-box,.route-btn {
+    left: 50%;
+    position: fixed;
+    transform: translate(-50%,-50%);
+}
+
+.route-box {
+    background-color: #fff;
+    padding: 50rpx;
+    top: 50%;
+}

@@ -1,0 +1,5 @@
+
+<view class="anlioneStyle">
+<image mode="widthFix" src="{{baseImgUrl+'img/pdf-1.png'}}" class="anlioneImage"></image>
+<image mode="widthFix" src="{{baseImgUrl+'img/pdf-2.png'}}" class="anlioneImage"></image>
+</view>

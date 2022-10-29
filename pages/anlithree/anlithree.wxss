@@ -1,0 +1,9 @@
+/* pages/anlione/anlione.wxss */
+.anlioneStyle{
+  margin: 10rpx;
+  border-radius: 10rpx;
+}
+.anlioneImage{
+  border-radius: 10rpx;
+  width: 100%;
+}

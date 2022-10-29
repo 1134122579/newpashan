@@ -1,0 +1,182 @@
+<view class="countPage" wx:if="{{is_jy==1}}">
+  <view class="header" style="display: flex;">
+    <image src="{{userInfo.headimgurl}}" style="width: 50px;height: 50px;border-radius: 50%;display: block;"></image>
+    <view class="name">{{userInfo.name}}</view>
+    <view class="name dt" bindtap="jy">进入地图</view>
+    <view class="name newJY" bindtap="jy" style="width: 30%;text-align: right;">新救援申请</view>
+  </view>
+  <view class="content">
+    <view class="title">
+      <view class="title_l">
+        当日登山流量
+      </view>
+      <view class="title_r" bindtap="getCount">
+        <van-icon name="replay" />
+        <view>刷新</view>
+      </view>
+    </view>
+    <view class="trh" style="border-bottom:6rpx #E8E8E8 solid ">
+      <view class="th">登山口</view>
+      <view class="th">总数</view>
+      <view class="th ">未启</view>
+      <view class="th ">在途</view>
+      <view class="th ">结束</view>
+    </view>
+    <view class="tr" style="font-weight:bold;font-size: 14px;">
+      <view class="td">总数</view>
+      <view class="td">{{all_numAll}}</view>
+      <view class="td">{{beianAll}}</view>
+      <view class="td">{{zaituAll}}</view>
+      <view class="td">{{jieshuAll}}</view>
+    </view>
+    <view class="tr" style="font-weight:bold;font-size: 14px;" wx:for="{{getdataCount}}" wx:key="inde">
+      <view class="td">{{item.rukou}}</view>
+      <view class="td">{{item.all_num}}</view>
+      <view class="td">{{item.beian}}</view>
+      <view class="td">{{item.zaitu}}</view>
+      <view class="td">{{item.jieshu}}</view>
+    </view>
+  </view>
+</view>
+<view class="countPage" wx:if="{{is_jy==2}}">
+  <block wx:for="{{jy_list}}" wx:key="index" wx:if="{{jy_list.length>0}}">
+    <view class="block">
+      <view class=" {{item.status==2?' title_time backgroundred':'title_time'}}">{{item.create_time}}</view>
+      <view class="header" style="display: flex; justify-content: space-around;">
+        <image src="{{item.headimgurl}}" style="width: 50px;height: 50px;border-radius: 50%;display: block;"></image>
+        <view class="name">{{item.name}}</view>
+        <view class="name dt" bindtap="goJypage" data-item="{{item}}">进入地图</view>
+        <view class="name newJY" style="margin-top: -30rpx;  width: 36%;font-size: 22rpx;" wx:if="{{item.status==2}}">
+          <view class="jysize" style="color:#e72828 ;"> 等待救援</view>
+          <view style="display:flex;justify-content: flex-start;align-items: center;">
+            <image style="width: 30rpx;height: 30rpx;display: block;" src="/images/rukou.jpg"></image>
+            <view class="textRukou">{{item.rukou}}</view>
+          </view>
+        </view>
+
+        <view class="name " style="margin-top: -30rpx;  width: 36%;font-size: 22rpx;" wx:if="{{item.status==1}}">
+          <view class="jysize"> 已完成</view>
+          <view style="display:flex;justify-content: flex-start;align-items: center;">
+            <image style="width: 30rpx;height: 30rpx;display: block;" src="/images/rukou.jpg"></image>
+            <view class="textRukou">{{item.rukou}}</view>
+          </view>
+        </view>
+      </view>
+    </view>
+
+  </block>
+  <view class="listnull" wx:if="{{isNulist}}">暂无更多</view>
+  <view class="isNulist" wx:if="{{jy_list.length<=0}}">
+    <van-empty description="暂无数据" />
+  </view>
+</view>
+<view class="countPage" wx:if="{{is_jy==3}}">
+  <picker mode="date" value="{{dk_time}}" start="2021-08-01" end="{{enddate}}" bindchange="bindDateChange">
+    <view class="header_btton">
+      <van-icon name="arrow-left" size="16" color="#367CD5" />
+      <view class="dk_time">{{dk_time}}</view>
+      <van-icon name="arrow" size="16" color="#367CD5" />
+    </view>
+  </picker>
+  <block wx:for="{{DkList}}" wx:key="index" wx:if="{{DkList.length>0}}">
+    <view class="block">
+      <view class="header" style="display: flex; justify-content: space-around;border-bottom: 1px solid #e7e5e5;">
+        <image src="{{item.headimgurl}}" style="width: 50px;height: 50px;border-radius: 50%;display: block;"></image>
+        <view class="name">{{item.name}}</view>
+        <view class="name dt Dk" bindtap="onDkonclick" data-item="{{item}}">{{type==1?'上班打卡':'下班打卡'}}</view>
+        <view class="name newJY DKTimeStyle" bindtap="golookpage" data-item="{{item}}">
+          <view>
+            <view class="DKTimeStyle_t">上班打卡:{{item.onTime}}</view>
+            <view class="DKTimeStyle_t"> 下班打卡:{{item.upTime}}</view>
+          </view>
+          <view style="margin-left: 20rpx;">
+            <van-icon name="arrow" size="16" color="#367CD5" />
+          </view>
+        </view>
+      </view>
+    </view>
+  </block>
+  <!-- <view class="listnull" wx:if="{{isNulist}}">暂无更多</view> -->
+  <view class="isnullbuttonDk" wx:if="{{DkList.length<=0}}">
+    <van-empty description="暂无数据" />
+    <!-- <view class="name dt Dk" bindtap="onDkonclick" data-item="{{item}}">{{type==1?'上班打卡':'下班打卡'}}</view> -->
+  </view>
+</view>
+<view class="countPage" style="margin-top: 50px;" wx:if="{{is_jy==4}}">
+  <view class="counttitle">当日登山记录</view>
+  <block wx:for="{{DsLogList}}" wx:key="index" wx:if="{{DsLogList.length>0}}">
+    <view class="block" style="margin-top: 14rpx;">
+      <!-- <view class=" {{item.status==2?' title_time backgroundred':'title_time'}}">{{item.create_time}}</view> -->
+      <view class="header" style="display: flex; justify-content: space-between;align-items: center;height: 100%">
+        <view class="olg">
+          <image src="{{item.headimgurl}}" mode="widthFix" style="width: 50px;height: 50px;border-radius: 50%;display: block;"></image>
+          <view class="name">{{item.name}}</view>
+        </view>
+        <view>
+          <view style="color: #333;font-size: 24rpx;padding-bottom: 10rpx;">信息</view>
+          <view style="display: flex;justify-content: center;align-items: center; font-size: 22rpx;color: #333;font-weight: 600;">
+            <view wx:if="{{item.type==2}}">团队</view>
+            <view wx:if="{{item.type==1}}">个人</view>
+            /
+            <view>{{item.num}}人</view>
+          </view>
+          <!-- 状态 -->
+          <view style="color: #333;font-size: 24rpx;padding: 10rpx 0;">状态</view>
+          <view wx:if="{{item.status==1}}" style="color: #67C23A;font-size: 24rpx;">已备案</view>
+          <view wx:if="{{item.status==2}}" style="color: #ccc;font-size: 24rpx;">已结束</view>
+          <view wx:if="{{item.status==3}}" style="color:#E6A23C;font-size: 24rpx;">在途中</view>
+          <view wx:if="{{item.status==4}}" style="color:#F56C6C;font-size: 24rpx;">已取消</view>
+        </view>
+
+        <view class="name newJY olgstyle">
+          <view class="descolg">
+            <view class="textRukou" style="color: #333;font-weight: 600;">登山入口：</view>
+            <view class="textRukou">{{item.rukou}}</view>
+          </view>
+          <view class="descolg">
+            <view class="textRukou" style="color: #333;font-weight: 600;">登山时间：</view>
+            <view class="textRukou">{{item.start_time}}</view>
+          </view>
+          <view class="descolg">
+            <view class="textRukou" style="color: #333;font-weight: 600;">下山出口：</view>
+            <view class="textRukou">{{item.end_rukou}}</view>
+          </view>
+          <view class="descolg">
+            <view class="textRukou" style="color: #333;font-weight: 600;">下山时间：</view>
+            <view class="textRukou">{{item.end_time||""}}</view>
+          </view>
+
+        </view>
+
+        <view class="name " style="margin-top: -30rpx;  width: 36%;font-size: 22rpx;" wx:if="{{item.status==1}}">
+          <view class="jysize"> 已完成</view>
+          <view style="display:flex;justify-content: flex-start;align-items: center;">
+            <image style="width: 30rpx;height: 30rpx;display: block;" src="/images/rukou.jpg"></image>
+            <view class="textRukou">{{item.rukou}}</view>
+          </view>
+        </view>
+      </view>
+    </view>
+
+  </block>
+  <view class="listnull" wx:if="{{isNulist}}">暂无更多</view>
+  <view class="isNulist" wx:if="{{DsLogList.length<=0}}">
+    <van-empty description="暂无数据" />
+  </view>
+</view>
+
+
+<view class="flooter">
+  <view class="block" bindtap="tj">
+    统计
+  </view>
+  <view class="block" bindtap="jy">
+    救援
+  </view>
+  <view class="block" bindtap="dk">
+    打卡
+  </view>
+  <view class="block" bindtap="jl">
+    记录
+  </view>
+</view>

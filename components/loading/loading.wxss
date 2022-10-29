@@ -1,0 +1,26 @@
+.loading {
+    bottom: 0;
+    left: 0;
+    position: fixed;
+    right: 0;
+    top: 0;
+    z-index: 10000;
+}
+
+.loading.bg {
+    background-color: rgba(0,0,0,.3);
+}
+
+.loading-spinner {
+    height: 70rpx;
+    left: 50%;
+    position: absolute;
+    top: 50%;
+    transform: translate(-50%,-50%);
+    width: 70rpx;
+}
+
+.loading-img {
+    height: 100%;
+    width: 100%;
+}

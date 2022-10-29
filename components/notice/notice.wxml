@@ -1,0 +1,17 @@
+<view class="notice">
+    <view bindtap="goApp" class="right">
+        <image src="/images/notice.png" style="width:60rpx;height:60rpx"></image>
+    </view>
+    <view class="left">
+        <text class="iconfont icon-labagonggao voice"></text>
+        <view class="left-box">
+            <view class="left-text"></view>
+            <view class="content-box">
+                <view animation="{{animationData}}" class="content-text">
+                    <text id="text">{{text}}</text>
+                </view>
+            </view>
+            <view class="right-text"></view>
+        </view>
+    </view>
+</view>

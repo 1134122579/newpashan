@@ -1,0 +1,17 @@
+<!-- <loading type="1" wx:if="{{!dataBack}}"></loading> -->
+<!-- <view wx:else></view> -->
+<view >
+    <view>
+        <image class="pic" src="/images/backgroundLocation.png"></image>
+        <view class="login-top-desc">
+            <view>后台定位，安全出行</view>
+            <view style="margin:10rpx auto">时刻预防紧急危险情况</view>
+        </view>
+        <view class="btn">
+            <view bindtap="tophone" class="btn-box" style="background-color:{{startLocationUpdateBackground}}" >
+                <view>后台位置授权</view>
+            </view>
+            <!-- <label class="btn-box" style="background-color:#999" >已授权</label> -->
+        </view>
+    </view>
+</view>

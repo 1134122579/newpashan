@@ -1,0 +1,10 @@
+<loading type="1" wx:if="{{!dataBack}}"></loading>
+<view wx:else>
+    <map arrowLine showLocation covers="{{covers}}" id="myMap" latitude="{{latitude}}" longitude="{{longitude}}" markers="{{markers}}" polyline="{{polyline}}" style="width: 100%; height: {{windowHeight}}rpx;"></map>
+    <view bindtap="routeChanging" class="route-btn">请选择线路图</view>
+    <view class="route-box" wx:if="{{routeChanging}}">
+        <view wx:for="{{route}}" wx:key="index">
+            <view bindtap="change" data-id="{{item.id}}">{{item.name}}</view>
+        </view>
+    </view>
+</view>

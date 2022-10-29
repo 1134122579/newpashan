@@ -1,0 +1,73 @@
+{
+  "pages": [
+    "pages/index/index",
+    "pages/anlione/anlione",
+    "pages/lookdkpage/lookdkpage",
+    "pages/endcode/endcode",
+    "pages/anlithree/anlithree",
+    "pages/anlitwo/anlitwo",
+    "pages/anlitiaoli/anlitiaoli",
+    "pages/count/count",
+    "pages/testify/testify",
+    "pages/user/user",
+    "pages/jiuyuanDetail/jiuyuanDetail",
+    "pages/entryDetail/entryDetail",
+    "pages/backgroundLocation/backgroundLocation",
+    "pages/testCanvas/testCanvas",
+    "pages/tempReport/tempReport",
+    "pages/pdf/pdf",
+    "pages/route/route",
+    "pages/promise/promise",
+    "pages/fire/fire",
+    "pages/test/test",
+    "pages/article/article",
+    "pages/QR/QR",
+    "pages/add/add",
+    "pages/scan/scan",
+    "pages/list/list",
+    "pages/login/login",
+    "pages/phone/phone",
+    "pages/detail/detail",
+    "pages/registered/registered",
+    "pages/scanResult/scanResult",
+    "pages/map/map",
+    "pages/day_static/day_static",
+    "pages/moth_static/moth_static",
+    "pages/getUserDsLog/getUserDsLog"
+  ],
+  "window": {
+    "backgroundTextStyle": "light",
+    "navigationBarBackgroundColor": "#fff",
+    "navigationBarTitleText": "南澳登山",
+    "navigationBarTextStyle": "black"
+  },
+  "sitemapLocation": "sitemap.json",
+  "permission": {
+    "scope.userLocation": {
+      "desc": "用来记录登山路线"
+    },
+    "scope.userLocationBackground": {
+      "desc": "用来记录登山路线"
+    }
+  },
+  "requiredBackgroundModes": [
+    "location",
+    "startLocationUpdate",
+    "getLocation",
+    "onLocationChange",
+    "startLocationUpdateBackground"
+  ],
+  "requiredPrivateInfos": [
+    "startLocationUpdate",
+    "getLocation",
+    "onLocationChange",
+    "startLocationUpdateBackground"
+  ],
+  "usingComponents": {
+    "van-popup": "@vant/weapp/popup/index",
+    "van-empty": "@vant/weapp/empty/index",
+    "van-button": "@vant/weapp/button/index",
+    "van-icon": "@vant/weapp/icon/index",
+    "van-notice-bar": "@vant/weapp/notice-bar/index"
+  }
+}

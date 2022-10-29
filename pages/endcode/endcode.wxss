@@ -1,0 +1,150 @@
+/* pages/endcode/endcode.wxss */
+
+page {
+  background: #F7F7F7;
+}
+
+.edncode {
+  background: #fff;
+  margin: 20rpx ;
+  box-sizing: border-box;
+  padding: 10rpx 0;
+}
+
+.userinfo {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  background: #ffffff;
+  padding: 20rpx;
+  margin: 20rpx;
+  /* border-radius: 10rpx; */
+  border-bottom: 1px solid #F7F7F7;
+}
+.header {
+  width: 80rpx;
+  height: 80rpx;
+  border-radius: 50%;
+}
+
+.usertext {
+  flex: 1;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.name {
+  color: #333333;
+  font-size: 28rpx;
+  margin: 0 30rpx;
+}
+
+.mobile {
+  color: #cccccc;
+  margin-top: 20rpx;
+  font-size: 26rpx;
+}
+
+
+.desc {
+  margin: 20rpx;
+  background: #ffffff;
+  border-radius: 10rpx;
+  padding: 20rpx;
+  text-align: center;
+}
+
+.desc_title {
+  text-align: center;
+  font-size: 40rpx;
+  font-weight: 600;
+  margin-bottom: 20rpx;
+}
+
+.block- {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 10rpx;
+  width: 100%;
+  box-sizing: border-box;
+}
+.block-2{
+  background: #F7F7F7;
+}
+.block-2 .text{
+  width: 100%;
+  text-align: center;
+}
+.block-2 .view{
+  width: 100%;
+}
+
+.li {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 10rpx;
+  font-size: 28rpx;
+  background: #F7F7F7;
+  width: 49%;
+  /* padding: 20rpx 0; */
+  height: 120rpx;
+  flex-shrink: 0;
+}
+
+.li-icon {
+  width: 60rpx;
+  max-height: 60rpx;
+  display: block;
+}
+
+.text {
+  margin-left: 10rpx;
+  text-align: center;
+}
+
+.view {
+  width: 150rpx;
+  /* text-align: left; */
+  font-size: 24rpx;
+  color: #cccccc;
+}
+
+.rukou {
+  /* color: #377cd4; */
+  color: #333333;
+  font-weight: 600;
+  padding: 10rpx 0;
+  font-size: 26rpx;
+}
+
+.button {
+  background: #377cd4;
+  border-radius: 10rpx;
+  color: #fff;
+  font-size: 26rpx;
+  font-weight: 400;
+  height: 80rpx;
+  left: 50%;
+  line-height: 80rpx;
+  margin: 20rpx auto 80rpx;
+  opacity: 1;
+  text-align: center;
+  width: 694rpx;
+}
+
+.null {
+  padding: 20px;
+  font-size: 24rpx;
+}
+
+.canvas {
+  margin: 20rpx auto;
+}
+.block-3{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}

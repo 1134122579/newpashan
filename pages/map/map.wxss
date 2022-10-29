@@ -1,0 +1,114 @@
+#mymap {
+    z-index: 1;
+}
+
+.choose-coordinate {
+    background-color: #4e63a9;
+    border-radius: 6rpx;
+    bottom: 10%;
+    color: #fff;
+    font-size: 26rpx;
+    font-weight: 400;
+    left: 50%;
+    line-height: 80rpx;
+    position: fixed;
+    text-align: center;
+    transform: translate(-50%,0);
+    width: 694rpx;
+}
+
+.copyBtn {
+    display: flex;
+    justify-content: space-around;
+    margin: 20rpx auto;
+}
+
+.copyCancelBtn,.copyConfirmBtn {
+    background-color: #4e63a9;
+    border-radius: 6rpx;
+    color: #fff;
+    padding: 10rpx 40rpx;
+}
+
+.data-box {
+    display: flex;
+    flex-direction: column;
+}
+
+.copy {
+    width: 520rpx;
+}
+
+.coordinate,.copy {
+    background-color: #fff;
+    border-radius: 20rpx;
+    left: 50%;
+    position: fixed;
+    top: 50%;
+    transform: translate(-50%,-50%);
+}
+
+.coordinate-t {
+    font-size: 30rpx;
+    font-weight: 700;
+    margin: 30rpx 0;
+    text-align: center;
+}
+
+.coordinate-data {
+    margin: 0 20rpx;
+    padding: 0 20rpx;
+    width: 250rpx;
+}
+
+.coordinate {
+    padding: 20rpx 0;
+    width: 550rpx;
+    z-index: 3;
+}
+
+.coordinate-info {
+    align-items: center;
+    display: flex;
+    font-size: 26rpx;
+    justify-content: space-around;
+    margin: 0 auto;
+    width: 70%;
+}
+
+.coordinate-title {
+    font-weight: 700;
+}
+
+.ordinate-confirm {
+    background-color: #4e63a9;
+    border-radius: 5rpx;
+    color: #fff;
+    font-size: 30rpx;
+    margin: 30rpx 0;
+    padding: 20rpx 50rpx;
+    text-align: center;
+}
+
+.picg {
+    background-color: hsla(0,0%,100%,.7);
+    border-radius: 30rpx 0 0 30rpx;
+    padding: 30rpx;
+    position: fixed;
+    right: 0;
+    top: 100rpx;
+}
+
+.picker {
+    display: flex;
+    justify-content: space-between;
+}
+
+.picker-date {
+    width: 690rpx;
+}
+
+.entry-select-option {
+    display: flex;
+    margin: 0 auto 30rpx;
+}

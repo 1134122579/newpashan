@@ -1,0 +1,132 @@
+<!-- <loading type="1" wx:if="{{!dataBack}}"></loading> -->
+<!-- <view wx:else>
+    <view>
+   
+        <view class="list-type" wx:for="{{list}}" wx:key="index">
+            <view class="list-info">
+                <view>{{item.dateBack}}</view>
+                <view class="list-info-entry">{{item.entry}}</view>
+            </view>
+            <view bindtap="modify" class="list-state" data-condition="{{item.condition}}" data-entryData="{{item}}" data-entryId="{{item.id}}" data-entryid="{{item.id}}" data-teamid="{{item.teamid}}" wx:if="{{item.teamid=='0'&&item.condition=='-10'}}">
+                <label>修改</label>
+            </view>
+            <view bindtap="toQR" class="list-state" data-condition="{{item.condition}}" data-entryId="{{item.id}}" data-entryid="{{item.id}}" data-teamid="{{item.teamid}}">
+                <label wx:if="{{item.condition=='-20'}}">创建中</label>
+                <label wx:elif="{{item.condition=='-10'}}">未开始</label>
+                <label wx:elif="{{item.condition=='0'}}">进行中</label>
+                <label wx:elif="{{item.condition=='100'}}">已取消</label>
+                <label wx:else>已结束</label>
+            </view>
+        </view>
+    </view>
+    <view style="width:{{screenWidth}}rpx;height:{{screenHeight}}rpx;position:fixed;left:0;top:0;background-color:#999;opacity:0.7" wx:if="{{modify}}"></view>
+    <view class="modify" wx:if="{{modify}}">
+        <view>
+            <view class="currentEntry" style="margin:30rpx 0">当前登山口：{{entryData.entry}}</view>
+            <view style="display:flex">
+                <view class="modifyEntry">修改登山口：</view>
+                <picker bindchange="bindPickerEnter" class="entry-select" range="{{enter}}" value="{{index}}">
+                    <view class="picker" wx:if="{{!ensureEnter}}">
+                        <view class="entry-select-option">
+                            <view class="sp">请选择登山口</view>
+                            <view class="sp">></view>
+                        </view>
+                    </view>
+                    <view class="picker" wx:else>
+                        <view class="entry-select-option sp">
+                            <view>{{ensureEnter}}</view>
+                            <view>></view>
+                        </view>
+                    </view>
+                </picker>
+            </view>
+            <view class="currentTime" style="margin:15rpx 0">当前时间：{{fn.split(entryData.time)[0]}}</view>
+            <picker bindchange="bindDateChange" class="add-type" end="2031-04-13" mode="date" start="{{date}}" style="margin:15rpx 0" value="{{date}}">
+                <view style="display:flex" wx:if="{{!dateN}}">修改时间：<view class="sp">请选择日期</view>
+                </view>
+                <view class="picker picker-date" wx:else>
+                    <view>修改时间：</view>
+                    <view>
+                        <view class="sp" style="display:flex">
+                            <view>{{dateN}}</view>
+                            <view>></view>
+                        </view>
+                    </view>
+                </view>
+            </picker>
+        </view>
+        <view style="display:flex;justify-content:space-around;margin-top:30rpx">
+            <view bindtap="confirmModify" class="confirmModify">确认修改</view>
+            <view bindtap="cancelModify" class="cancelModify">取消修改</view>
+        </view>
+    </view>
+</view> -->
+
+    <view>
+   
+        <view class="list-type"  wx:key="index">
+            <view class="list-info">
+                <view>1</view>
+                <view class="list-info-entry">1</view>
+            </view>
+            <view bindtap="modify" class="list-state" >
+                <label>修改</label>
+            </view>
+            <view bindtap="toQR" class="list-state" >
+                <label>创建中</label>
+                <!-- <label wx:elif="{{item.condition=='-10'}}">未开始</label>
+                <label wx:elif="{{item.condition=='0'}}">进行中</label>
+                <label wx:elif="{{item.condition=='100'}}">已取消</label>
+                <label wx:else>已结束</label> -->
+            </view>
+        </view>
+    </view>
+    <view style="width:{{screenWidth}}rpx;height:{{screenHeight}}rpx;position:fixed;left:0;top:0;background-color:#999;opacity:0.7" wx:if="{{modify}}"></view>
+    <view class="modify">
+        <view>
+            <view class="currentEntry" style="margin:30rpx 0">当前登山口：a</view>
+            <view style="display:flex">
+                <view class="modifyEntry">修改登山口：</view>
+                <picker bindchange="bindPickerEnter" class="entry-select" >
+                    <view class="picker">
+                        <view class="entry-select-option">
+                            <view class="sp">请选择登山口</view>
+                            <view class="sp">></view>
+                        </view>
+                    </view>
+                    <view class="picker" >
+                        <view class="entry-select-option sp">
+                            <view>a</view>
+                            <view>></view>
+                        </view>
+                    </view>
+                </picker>
+            </view>
+            <view class="currentTime" style="margin:15rpx 0">当前时间：a</view>
+            <picker bindchange="bindDateChange" class="add-type" end="2031-04-13" mode="date" start="{{date}}" style="margin:15rpx 0" value="{{date}}">
+                <view style="display:flex">修改时间：<view class="sp">请选择日期</view>
+                </view>
+                <view class="picker picker-date" >
+                    <view>修改时间：a</view>
+                    <view>
+                        <view class="sp" style="display:flex">
+                            <view>a</view>
+                            <view>></view>
+                        </view>
+                    </view>
+                </view>
+            </picker>
+        </view>
+        <view style="display:flex;justify-content:space-around;margin-top:30rpx">
+            <view bindtap="confirmModify" class="confirmModify">确认修改</view>
+            <view bindtap="cancelModify" class="cancelModify">取消修改</view>
+        </view>
+    </view>
+
+<!-- <wxs module="fn">
+module.exports = ({
+    split: (function(str) {
+        return (str.split('T'))
+    }),
+});
+</wxs> -->

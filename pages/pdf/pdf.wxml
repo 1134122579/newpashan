@@ -1,0 +1,4 @@
+<!-- <loading type="1" wx:if="{{!dataBack}}"></loading> -->
+<view >
+    <web-view src="{{reportUrl}}" wx:if="{{reportShow}}"></web-view>
+</view>

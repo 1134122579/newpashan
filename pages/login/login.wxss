@@ -1,0 +1,53 @@
+.login-top {
+    left: 50%;
+    margin: 0 auto;
+    position: fixed;
+    text-align: center;
+    top: 40%;
+    transform: translate(-50%,-50%);
+}
+
+.login-top-icon {
+    height: 420rpx;
+    width: 420rpx;
+    border-radius: 50%;
+    overflow: hidden;
+}
+
+.login-top-desc {
+    color: #000;
+    font-size: 32rpx;
+    line-height: 44rpx;
+    margin-top: 78rpx;
+    opacity: .74;
+}
+
+.btn-box,.login-top-desc {
+    font-family: PingFang SC;
+    font-weight: 400;
+}
+
+.btn-box {
+    background: #57be6a;
+    border-radius: 6rpx;
+    color: #fff;
+    display: inline-block;
+    font-size: 28rpx;
+    height: 92rpx;
+    line-height: 92rpx;
+    margin: 10rpx auto;
+    opacity: 1;
+    text-align: center;
+    width: 45%;
+}
+
+.btn-list {
+    bottom: calc(env(safe-area-inset-bottom));
+    display: flex;
+    flex-direction: column;
+    left: 50%;
+    margin-bottom: 40rpx;
+    position: fixed;
+    transform: translate(-50%,0);
+    width: 100%;
+}

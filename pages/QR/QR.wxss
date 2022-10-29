@@ -1,0 +1,30 @@
+.qrcode-info {
+    display: flex;
+    justify-content: center;
+}
+
+.qrcode-info-detail {
+    background: #fff;
+    border: 2rpx solid #707070;
+    border-radius: 4rpx;
+    color: #000;
+    font-family: PingFang SC;
+    font-size: 26rpx;
+    font-weight: 400;
+    height: 68rpx;
+    line-height: 68rpx;
+    margin: 50rpx 10rpx;
+    opacity: 1;
+    padding: 0 15rpx;
+}
+
+.canvas {
+    margin: 10rpx auto 20rpx;
+}
+
+.qrcode {
+    left: 50%;
+    position: fixed;
+    top: 40%;
+    transform: translate(-50%,-50%);
+}

@@ -1,0 +1,95 @@
+<!-- <loading type="1" wx:if="{{!dataBack}}"></loading>
+<view wx:else>
+    <view wx:if="{{type==1}}">
+        <view class="article-box">
+            <view class="t1-title">{{titleArr[1]}}</view>
+            <view class="t1-nav">
+                <view class="t1-date">{{resdata.text2}}</view>
+                <view class="t1-name">{{titleArr[0]}}</view>
+            </view>
+            <image class="t1-banner" src="{{src[0]}}" wx:if="{{file[0]!=''}}"></image>
+            <view class="t1-para">
+                <view class="t1-number">{{resdata.text3}}</view>
+                <view class="t1-line"></view>
+                <view class="t1-para-name">{{resdata.text4}}</view>
+            </view>
+            <view class="t1-content">
+                <view class="t1-content-detail">
+                    <view class="t1-dec"></view>
+                    <view class="t1-content-words" style="margin:0 auto">{{resdata.text5}}</view>
+                </view>
+                <view class="t1-content-detail">
+                    <view class="t1-dec"></view>
+                    <view class="t1-content-words">{{resdata.text6}}</view>
+                </view>
+            </view>
+            <image class="t1-img" src="{{src[1]}}" wx:if="{{file[1]!=''}}"></image>
+            <image class="t1-img" src="{{src[2]}}" wx:if="{{file[2]!=''}}"></image>
+            <image class="t1-img" src="{{src[3]}}" wx:if="{{file[3]!=''}}"></image>
+            <image class="t1-img" src="{{src[4]}}" wx:if="{{file[4]!=''}}"></image>
+            <image class="t1-img" src="{{src[5]}}" wx:if="{{file[5]!=''}}"></image>
+        </view>
+    </view>
+    <view wx:elif="{{type==2}}">
+        <image bindtap="preview" src="{{resdata.text1}}" style="width:{{resdata.text2}}rpx;height:{{resdata.text3}}rpx"></image>
+    </view>
+    <view wx:elif="{{type==5}}">
+        <view class="t5b">
+            <view class="t5bt">{{titleArr[1]}}</view>
+            <view class="t5bf">
+                <view class="t5bfa">{{resdata.text1}}</view>
+                <view class="t5bfT">{{titleArr[0]}}</view>
+            </view>
+            <view class="t5bc">{{resdata.text2}}</view>
+        </view>
+    </view>
+    <view wx:else>return id or type fail</view>
+</view> -->
+
+<view>
+    <view>
+        <view class="article-box">
+            <view class="t1-title">项目</view>
+            <view class="t1-nav">
+                <view class="t1-date">项目</view>
+                <view class="t1-name">项目</view>
+            </view>
+            <image class="t1-banner" src="../../images/bg.png"></image>
+            <view class="t1-para">
+                <view class="t1-number">项目</view>
+                <view class="t1-line"></view>
+                <view class="t1-para-name">项目</view>
+            </view>
+            <view class="t1-content">
+                <view class="t1-content-detail">
+                    <view class="t1-dec"></view>
+                    <view class="t1-content-words" style="margin:0 auto">项目</view>
+                </view>
+                <view class="t1-content-detail">
+                    <view class="t1-dec"></view>
+                    <view class="t1-content-words">项目</view>
+                </view>
+            </view>
+            <image class="t1-img" src="../../images/bg.png" ></image>
+            <!-- <image class="t1-img" src="{{src[2]}}" wx:if="{{file[2]!=''}}"></image>
+            <image class="t1-img" src="{{src[3]}}" wx:if="{{file[3]!=''}}"></image>
+            <image class="t1-img" src="{{src[4]}}" wx:if="{{file[4]!=''}}"></image>
+            <image class="t1-img" src="{{src[5]}}" wx:if="{{file[5]!=''}}"></image> -->
+        </view>
+    </view>
+    <view>
+        <image bindtap="preview" src="../../images/bg.png" style="width:100rpx;height:100rpx"></image>
+    </view>
+    <view>
+        <view class="t5b">
+            <view class="t5bt">仙姑</view>
+            <view class="t5bf">
+                <view class="t5bfa">项目</view>
+                <view class="t5bfT">项目</view>
+            </view>
+            <view class="t5bc">项目</view>
+        </view>
+    </view>
+    <!-- <view wx:else>return id or type fail</view> -->
+</view>
+

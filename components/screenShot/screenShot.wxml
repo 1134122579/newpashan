@@ -1,0 +1,2 @@
+<button bindtap="setSaveImage" class="btn btn-theme">保存图片到本地</button>
+<canvas canvasId="imageCanvas" class="imageCanvas" disableScroll="true" hidden="{{canvasHidden}}" style="width:{{canvasWidth}}px; height:{{canvasHeight}}px"></canvas>

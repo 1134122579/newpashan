@@ -1,0 +1,154 @@
+<!-- <loading type="1" wx:if="{{!dataBack}}"></loading> -->
+<!-- 协议 -->
+<view class="" style="position: absolute;z-index: 10;width: 100%;height: 100%; background: rgba(0,0,0,.5);" wx:if="{{zrsclear}}">
+    <view class="response" wx:if="{{fire}}">
+        <scroll-view class="rc" scrollY="true">
+            <view class="rct">登山人员森林防火责任书</view><view class="rcd">
+                <view class="rcdw rcdws">请阅读以下内容后下滑至底部点击我已清楚以上责任书内容进行进一步操作。</view>
+                <view class="rcdw">为有效预防森林火灾发生，保护森林资源，根据《森林防火条例》、《广东省森林防火管理规定》，特制定本责任书：</view>
+                <view class="rcdw">一、登山人员必须接受护林人员检查，自觉上缴打火机、火柴等易燃易爆物品，严禁携带火种进山入林。</view>
+                <view class="rcdw">二、严禁在林区内吸烟及丢弃烟蒂、野炊、烤火、玩火。</view>
+                <view class="rcdw">三、严禁在林区内燃放烟花爆竹和孔明灯，在重要节假日、民间祭祀日自觉遵守森林防火有关规定，服从护林人员管理。</view>
+                <view class="rcdw">四、森林特别防火期内、对违反禁令或森林防火有关规定者，将依法顶格处罚。</view>
+                <view class="rcdw">五、自觉增强森林防火意识，一旦发生火情，要及时拨打“119”或报南澳办事处森林消防中队(电话:84425149)，坚决把火势控制在萌芽之中。</view>
+                <view class="rcdw">希望各登山人员认真遵守以上规定。造成山火者，将依法追究相关责任。本责任书点击下方我已清楚按钮后即时生效。</view>
+                <view bindtap="onfire" class="rcdb">我已清楚以上责任书内容</view>
+            </view>
+        </scroll-view>
+    </view>
+
+    <view class="response" wx:if="{{promise}}">
+        <scroll-view class="rc" scrollY="true">
+            <view class="rct">进入户外线路声明</view>
+            <view class="rcd">
+                <view class="rcdw rcdws">请阅读以下内容后下滑至底部点击我已清楚以上户外线路声明内容进行进一步操作。</view>
+                <view class="rcdw">我已阅读《进入户外线路须知》。并保证认真遵守这个规定。</view>
+                <view class="rcdw"> 本人理解户外线路沿动，存在安全隐患，会遇到崎岖地带或恶劣天气，远离救助和医疗服务，发生的风险可能致使自己受到伤害、甚至死亡。这些风险包括跌坠、落石、雷击、山洪暴发、山体塌方、溺水、失温、中暑、迷路、蛇(虫)咬刺伤、野兽、刑事案件等。 </view>
+                <view class="rcdw">本人理解以上所列的风险，并不完全包含了所有可能发生的风险，对此，本人愿意承担全部责任和因此而产生的一切费用。</view>
+                <view bindtap="onpromise" class="rcdb">我已清楚以上户外线路声明内容</view>
+            </view>
+        </scroll-view>
+    </view>
+    <view class="response" wx:if="{{islookTL}}">
+        <scroll-view class="rc" scrollY="true">
+            <view class="rct">森林防火条例</view>
+            <image mode="widthFix" style="width: 100%;" src="https://api.uba9.com/img/pdf-1.png"></image>
+            <image mode="widthFix" style="width: 100%;" src="https://api.uba9.com/img/pdf-2.png"></image>
+            <view bindtap="onlookTL" class="rcdb">我已经阅读森林防火条例</view>
+        </scroll-view>
+    </view>
+</view>
+<view>
+    <view class="title">
+        <image class="title-icon" src="/images/testify.png"></image>
+        <view class="title-words" wx:if="{{userInfo.is_auth==2}}">用户认证</view>
+        <view class="title-words" wx:if="{{userInfo.is_auth==1}}">修改认证</view>
+    </view>
+    <view class="testify-desc">为了更好地认证您的身份以及便于突发的救援，请先完善以下信息</view>
+    <view class="testify-box">
+        <view class="testify-type">
+            <view class="testify-title">头像</view>
+            <image class="avatar-img" src="{{userInfo.headimgurl}}" wx:if="{{userInfo}}"></image>
+            <image class="avatar-img" src="/images/index_squad_avatar.png" wx:else></image>
+        </view>
+        <view class="testify-type">
+            <view class="testify-title">
+                <view style="color:#DA3131;margin-right:10rpx;font-weight:bold">*</view>手机号码
+            </view>
+            <!-- <view>{{userInfo.mobile}}</view> -->
+            <input type="text" value="{{userInfo.mobile}}" placeholder="请输入手机号" bindinput="onInput" />
+            <button open-type="getPhoneNumber" bindgetphonenumber="getphone" class="getPhone" style="background: #377cd4;">获取手机号</button>
+        </view>
+    </view>
+    <view class="testify-desc">按要求进入林区需签署防火协议，姓名及身份证号为防火协议重要信息，请认真填写</view>
+    <view class="testify-box">
+        <view class="testify-type">
+            <view class="testify-title">
+                <!-- <view style="color:#DA3131;margin-right:10rpx;font-weight:bold">*</view> -->
+                姓名
+            </view>
+            <input bindblur="name" class="testify-input" placeholder="请输入您的真实姓名" type="text" value="{{userInfo.name}}"></input>
+        </view>
+        <view class="testify-type">
+            <view class="testify-title">
+                <!-- <view style="color:#DA3131;margin-right:10rpx;font-weight:bold">*</view>  -->
+                身份证
+            </view>
+            <input bindblur="idcard" class="testify-input" placeholder="请输入您的身份证号码" type="text" value="{{userInfo.idcard}}"></input>
+        </view>
+    </view>
+    <!-- <view class="testify-desc">有耕种作业的本地居民请选择“本地居民”选项，否则无法申请长期备案</view>
+    <view class="testify-type testify-box">
+        <view class="testify-title">
+            <view style="color:#DA3131;margin-right:10rpx;font-weight:bold">*</view>身份</view>
+        <picker bindchange="bindPickerRole" class="type-select" range="{{role}}" value="{{index}}">
+            <view class="picker" wx:if="{{ensureRole==undefined}}">
+                <view class="type-select-option">
+                    <view>请选择您的身份</view>
+                </view>
+            </view>
+            <view class="picker" wx:else>
+                <view class="type-select-option">
+                    <view wx:if="{{ensureRole}}">{{ensureRole}}</view>
+                    <view wx:elif="{{extraInfo.usertype}}">{{extraInfo.usertype}}</view>
+                    <view wx:else>{{role[roleIndex]}}</view>
+                </view>
+            </view>
+        </picker>
+    </view> -->
+    <view class="testify-desc">请完善以下紧急救援信息以便突发情况使用（选填）</view>
+    <view class="testify-box">
+        <view class="testify-type">
+            <view class="testify-title">
+                <!-- <view style="color:#fff;margin-right:10rpx;font-weight:bold">*</view> -->
+                紧急联系人姓名
+            </view>
+            <input bindblur="urgentname" class="testify-input" placeholder="请输入您的紧急联系人姓名" style="width:320rpx" type="text" value="{{userInfo.sos_name}}"></input>
+        </view>
+        <view class="testify-type">
+            <view class="testify-title">
+                <!-- <view style="color:#fff;margin-right:10rpx;font-weight:bold">*</view> -->
+                紧急联系人电话
+            </view>
+            <input bindblur="urgentphone" class="testify-input" placeholder="请输入您的紧急联系人电话" style="width:320rpx" type="text" value="{{userInfo.sos_mobile}}"></input>
+        </view>
+    </view>
+    <view class="testify-box testify-type" style="justify-content:space-around;align-items:center" wx:if="{{disease}}">
+        <checkbox-group bindchange="checkboxChange">
+            <view>
+                <label class="checkbox" wx:for="{{dList}}" wx:key="Index">
+                    <checkbox checked="{{item.checked}}" style="padding:15rpx;align-items:center" value="{{item.title}},{{item.id}}"></checkbox>{{item.name}}
+                </label>
+            </view>
+            <view bindtap="checkBoxSubmit" class="checkbox-confirm">确定</view>
+        </checkbox-group>
+    </view>
+
+    <view class="read">
+        <image bindtap="isnewRead" src="/images/add_notok.png" style="width:40rpx;height:40rpx;margin:0 10rpx;flex-shrink: 0;" wx:if="{{!queding}}"></image>
+        <image bindtap="notRead" src="/images/add_ok.png" style="width:40rpx;height:40rpx;margin:0 10rpx;flex-shrink: 0" wx:else></image>
+        <view class="read-words"> 我已阅读并同意<label style="color:#4E63A9" bindtap="isRead">《用户服务协议》</label>以及<label bindtap="isRead" style="color:#4E63A9">《隐私政策》</label>。 </view>
+    </view>
+    <view class="read">
+            <image bindtap="iszrsRead" src="/images/add_notok.png" style="width:40rpx;height:40rpx;margin:0 10rpx;flex-shrink: 0;" wx:if="{{!iszrsReadOK}}"></image>
+            <image bindtap="notzrsRead" src="/images/add_ok.png" style="width:40rpx;height:40rpx;margin:0 10rpx;flex-shrink: 0;" wx:else></image>
+            <view class="read-words" bindtap="iszrsRead">
+                <view>我已阅读并同意<label style="color:#4f64a9">《登山人员森林防火责任书》《森林防火条例》<text style="color: #acacac;"> 以及</text>《进入户外线路声明》</label>。</view>
+            </view>
+        </view>
+    <view bindtap="confirmTestify" class="testify-confirm">提交认证</view>
+    <!-- <view bindtap="confirmTestify" class="testify-confirm" wx:if="{{state=='set'}}">提交认证</view> -->
+    <!-- <view bindtap="confirmTestify" class="testify-confirm" wx:if="{{state=='reset'}}">保存修改</view> -->
+</view>
+<van-popup show="{{ clear }}" round bind:close="onClose">
+    <view class="zrs" wx:if="{{fire}}">
+        <view class="" style="padding: 20rpx;">
+            <rich-text id="f0" nodes="{{xytext}}" wx:if="{{iszrs}}"></rich-text>
+            <rich-text id="f1" nodes="{{yhxy}}" wx:if="{{isyhxy}}"></rich-text>
+        </view>
+        <view style="padding-top:30rpx;">
+            <van-button type="primary" bindtap="onys" wx:if="{{iszrs}}" color="#377cd4" block>我已人认真阅读隐私政策</van-button>
+            <van-button type="primary" bindtap="onyszc" wx:if="{{isyhxy}}" color="#377cd4" block>我已人认真阅读用户协议</van-button>
+        </view>
+    </view>
+</van-popup>
